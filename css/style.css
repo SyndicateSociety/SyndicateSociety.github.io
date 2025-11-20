@@ -1,0 +1,27 @@
+/* style.css */
+
+/* Body background and font */
+body {
+  background-color: #0d1b4c; /* dark blue */
+  font-family: inherit; /* keep default font */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* full viewport height */
+}
+
+/* Main title styling */
+h1 {
+  color: #ffffff; /* white text */
+  font-size: 4rem;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+/* Fade in/out animation */
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
