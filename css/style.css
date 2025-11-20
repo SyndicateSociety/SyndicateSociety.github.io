@@ -16,14 +16,19 @@ body {
 h1 {
   color: #ffffff; /* white text */
   font-size: 4rem;
-  animation: fadeBlink 4s infinite;
+  animation: fadeBlink 4.5s ease-in-out infinite; /* total cycle: 4.5s */
 }
 
-/* Fast fade out then back in */
+/* Keyframes: solid 4s, fade out 0.5s, back solid */
 @keyframes fadeBlink {
-  0%, 74% { opacity: 1; transform: scale(1); }   /* solid for ~4s */
-  75% { opacity: 0; transform: scale(0.95); }    /* fast fade out */
-  76%, 100% { opacity: 1; transform: scale(1); } /* fade back in */
+  0%, 88.88% { /* 0–4s solid */
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% { /* 0.5s fade out and back in */
+    opacity: 0;
+    transform: scale(0.95);
+  }
 }
 
 /* Mobile responsiveness */
