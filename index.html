@@ -13,23 +13,24 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
+      text-align: center; /* Universal paragraph centering */
     }
 
     /* Hero section */
     .hero {
       background-color: #0d1b4c;
       color: white;
-      text-align: center;
-      padding: 6rem 1rem; /* initial padding */
+      padding: 6rem 1rem;
       width: 100%;
-      transition: padding 0.3s ease, opacity 0.3s ease; /* smooth scroll effect */
+      transition: padding 0.3s ease, transform 0.3s ease;
+      overflow: hidden; /* prevent floating effect */
     }
 
     /* Hero h1 */
     #hero-title {
       margin: 0;
       font-size: 4rem;
-      animation: fadeIn 2s ease-in forwards; /* slow fade in on load */
+      animation: fadeIn 2s ease-in forwards;
     }
 
     @keyframes fadeIn {
@@ -67,20 +68,35 @@
     /* Centered italic text */
     .italic-center {
       font-style: italic;
-      text-align: center;
       margin: 1rem 0;
     }
 
     /* Centered non-italic text */
     .text-center {
-      text-align: center;
       margin: 1rem 0;
     }
 
-    /* Content center */
-    .content-center {
-      text-align: center;
-      margin: 1.5rem 0;
+    /* Button style */
+    .wide-button {
+      display: inline-block;
+      width: 100%;
+      max-width: 800px;
+      padding: 1rem 0;
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .wide-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     /* Images & videos centered */
@@ -106,6 +122,10 @@
         width: 95%;
         padding: 1rem 0;
       }
+
+      .wide-button {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -130,6 +150,10 @@
     <!-- Centered non-italic text -->
     <div class="text-center">
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
+      <!-- Wide button -->
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">
+        New to EVE? Get your Free Skillpoint boost here 🖐️
+      </a>
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
     </div>
 
@@ -160,23 +184,4 @@
 
   <footer class="site-footer"></footer>
 
-  <!-- Scroll behavior JS -->
-  <script>
-    const hero = document.querySelector('.hero');
-    const title = document.getElementById('hero-title');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-
-      // Smoothly shrink hero padding
-      const heroHeight = Math.max(50, 300 - scrollY);
-      hero.style.padding = heroHeight/2 + 'px 1rem';
-
-      // Smoothly shrink hero font size
-      const fontSize = Math.max(1.5, 4 - scrollY/150);
-      title.style.fontSize = fontSize + 'rem';
-    });
-  </script>
-
-</body>
-</html>
+  <!-- Scroll behavior JS -
