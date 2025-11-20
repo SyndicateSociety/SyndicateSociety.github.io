@@ -16,12 +16,12 @@ body {
 h1 {
   color: #ffffff; /* white text */
   font-size: 4rem;
-  animation: fadeBlink 8s infinite;
+  animation: fadeBlink 4s infinite;
 }
 
 /* Fast fade out then back in */
 @keyframes fadeBlink {
-  0%, 74% { opacity: 1; transform: scale(1); }   /* solid for ~6s */
+  0%, 74% { opacity: 1; transform: scale(1); }   /* solid for ~4s */
   75% { opacity: 0; transform: scale(0.95); }    /* fast fade out */
   76%, 100% { opacity: 1; transform: scale(1); } /* fade back in */
 }
