@@ -33,9 +33,23 @@
       animation: fadeIn 2s ease-in forwards;
     }
 
+    /* Subtitle fade-in */
+    #hero-subtitle {
+      opacity: 0;
+      font-style: italic;
+      margin-top: 0.5rem;
+      animation: subtitleFade 0.5s ease-in forwards;
+      animation-delay: 0.5s;
+    }
+
     @keyframes fadeIn {
       0% { opacity: 0; transform: scale(0.95); }
       100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes subtitleFade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     /* Container for content */
@@ -103,7 +117,8 @@
     img, iframe {
       display: block;
       margin: 1rem auto;
-      max-width: 100%;
+      max-width: 80%; /* smaller image to fit hero */
+      height: auto;
     }
 
     /* Paragraph styling */
@@ -118,6 +133,10 @@
         font-size: 2.5rem;
       }
 
+      #hero-subtitle {
+        font-size: 1rem;
+      }
+
       .container {
         width: 95%;
         padding: 1rem 0;
@@ -125,6 +144,10 @@
 
       .wide-button {
         font-size: 1rem;
+      }
+
+      img {
+        max-width: 95%;
       }
     }
   </style>
@@ -134,7 +157,7 @@
   <!-- Hero section -->
   <header class="hero">
     <h1 id="hero-title">Syndicate Society</h1>
-    <div class="italic-center">EVE’s Timeless Pilot Syndicate</div>
+    <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
   </header>
 
   <!-- Scrollable content -->
@@ -152,7 +175,7 @@
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
       <!-- Wide button -->
       <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">
-        New to EVE? Get your Free Skillpoint boost here 🖐️
+        New to EVE? Get YOUR Free Skill boost here 🖐️
       </a>
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
     </div>
@@ -184,4 +207,23 @@
 
   <footer class="site-footer"></footer>
 
-  <!-- Scroll behavior JS -
+  <!-- Scroll behavior JS -->
+  <script>
+    const hero = document.querySelector('.hero');
+    const title = document.getElementById('hero-title');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      // Shrink hero height and font more compactly
+      const heroHeight = Math.max(30, 300 - scrollY); // min padding smaller
+      hero.style.padding = heroHeight/2 + 'px 1rem';
+
+      // Shrink hero font smoothly
+      const fontSize = Math.max(1.5, 4 - scrollY/150);
+      title.style.fontSize = fontSize + 'rem';
+    });
+  </script>
+
+</body>
+</html>
