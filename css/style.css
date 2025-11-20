@@ -16,14 +16,14 @@ body {
 h1 {
   color: #ffffff; /* white text */
   font-size: 4rem;
-  animation: fadeInOut 3s ease-in-out infinite;
+  animation: fadeBlink 8s infinite;
 }
 
-/* Fade in/out animation with smooth scaling */
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: scale(0.95); }
-  50% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.95); }
+/* Fast fade out then back in */
+@keyframes fadeBlink {
+  0%, 74% { opacity: 1; transform: scale(1); }   /* solid for ~6s */
+  75% { opacity: 0; transform: scale(0.95); }    /* fast fade out */
+  76%, 100% { opacity: 1; transform: scale(1); } /* fade back in */
 }
 
 /* Mobile responsiveness */
