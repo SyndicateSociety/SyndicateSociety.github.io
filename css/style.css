@@ -3,7 +3,7 @@
 /* Body background and font */
 body {
   background-color: #0d1b4c; /* dark blue */
-  font-family: inherit; /* keep default font */
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
@@ -19,9 +19,23 @@ h1 {
   animation: fadeInOut 3s ease-in-out infinite;
 }
 
-/* Fade in/out animation */
+/* Fade in/out animation with smooth scaling */
 @keyframes fadeInOut {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+  0% { opacity: 0; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.95); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem; /* smaller for phones */
+    text-align: center; /* keep centered */
+  }
+
+  body {
+    flex-direction: column;
+    padding: 1rem;
+    height: auto; /* let body grow with content */
+  }
 }
