@@ -7,33 +7,152 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="assets/css/main.scss">
+  <style>
+    /* Body & global */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Hero section */
+    .hero {
+      background-color: #0d1b4c;
+      color: white;
+      text-align: center;
+      padding: 6rem 1rem; /* initial padding */
+      width: 100%;
+      transition: padding 0.3s ease, opacity 0.3s ease; /* smooth scroll effect */
+    }
+
+    /* Hero h1 */
+    #hero-title {
+      margin: 0;
+      font-size: 4rem;
+      animation: fadeIn 2s ease-in forwards; /* slow fade in on load */
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Container for content */
+    .container {
+      max-width: 1000px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 2rem 0;
+      background-color: white;
+      color: black;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Optional dotted pattern overlay */
+    .container::before {
+      content: "";
+      background-image: radial-gradient(black 1px, transparent 1px);
+      background-size: 10px 10px;
+      opacity: 0.05;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Centered italic text */
+    .italic-center {
+      font-style: italic;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    /* Centered non-italic text */
+    .text-center {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    /* Content center */
+    .content-center {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    /* Images & videos centered */
+    img, iframe {
+      display: block;
+      margin: 1rem auto;
+      max-width: 100%;
+    }
+
+    /* Paragraph styling */
+    p {
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      #hero-title {
+        font-size: 2.5rem;
+      }
+
+      .container {
+        width: 95%;
+        padding: 1rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Hero section -->
   <header class="hero">
     <h1 id="hero-title">Syndicate Society</h1>
+    <div class="italic-center">EVE’s Timeless Pilot Syndicate</div>
   </header>
 
   <!-- Scrollable content -->
   <main class="container">
+    <!-- Image -->
     <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
+
+    <!-- Caption below image -->
     <div class="italic-center">
       Welcome home, pilot! Here you can breathe, log in, and fly EVE the way it’s meant to be played.
     </div>
-    <p><em>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</em></p>
-    <p><em>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</em></p>
+
+    <!-- Centered non-italic text -->
+    <div class="text-center">
+      <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
+      <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+    </div>
+
+    <!-- Italic text -->
     <div class="italic-center">
       For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
     </div>
+
     <p>In Syndicate Society, EVE is a hobby, not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
+
+    <!-- Embedded YouTube video -->
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
+
     <div class="italic-center">
       Pilot, Syndicate is your bastion, a place to gather strength, a home to become you.
     </div>
+
     <p>We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
+
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
+
     <p>View our guide-compendium linked in our Corp Bulletin.</p>
+
     <div class="content-center">
       (SYN.S circa 2011. 2015. 2024+)
     </div>
@@ -49,16 +168,13 @@
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
 
-      // Shrink hero height and font size
-      const heroHeight = Math.max(100, 300 - scrollY); // min height 100px
+      // Smoothly shrink hero padding
+      const heroHeight = Math.max(50, 300 - scrollY);
       hero.style.padding = heroHeight/2 + 'px 1rem';
 
-      const fontSize = Math.max(1.5, 4 - scrollY/150); // shrink from 4rem to ~1.5rem
+      // Smoothly shrink hero font size
+      const fontSize = Math.max(1.5, 4 - scrollY/150);
       title.style.fontSize = fontSize + 'rem';
-
-      // Fade out hero as user scrolls further
-      const opacity = Math.max(0, 1 - scrollY / 400); // fades out over 400px scroll
-      hero.style.opacity = opacity;
     });
   </script>
 
