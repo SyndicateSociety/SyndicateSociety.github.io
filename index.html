@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syndicate Society</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Dancing+Script&display=swap" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Edu+NSW+ACT+Cursive&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -16,7 +18,7 @@
       overflow-x: hidden;
 
       /* Subtle sand/speckled background */
-      background-color: #fefdf7; /* very light sand */
+      background-color: #fefdf7;
       background-image:
         radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
         radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
@@ -37,7 +39,6 @@
       align-items: center;
     }
 
-    /* MP4 Video background */
     .hero-video {
       position: absolute;
       top: 0;
@@ -49,9 +50,7 @@
       z-index: 0;
     }
 
-    .hero-logo,
-    #hero-title,
-    #hero-subtitle {
+    .hero-logo, #hero-title, #hero-subtitle {
       position: relative;
       z-index: 1;
     }
@@ -136,12 +135,8 @@
       margin: 1.2rem 0;
     }
 
-    .text-center {
-      margin: 2rem 0;
-    }
-
     .poem-container {
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Edu NSW ACT Cursive', cursive;
       font-size: 1.6rem;
       line-height: 1.6;
       margin: 3rem 0;
@@ -150,7 +145,7 @@
     }
 
     .poem-container .spaced {
-      margin: 1.2rem 0; /* subtle spacing between lines */
+      margin: 1.2rem 0;
     }
 
     .wide-button, .short-button {
@@ -226,7 +221,7 @@
       Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
     </div>
 
-    <!-- Poem section -->
+    <!-- Poem Section -->
     <div class="poem-container">
       <div>And here the stories carry on,</div>
       <div class="spaced">Where real-life joys are never gone.</div>
@@ -268,7 +263,6 @@
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
-  <!-- Scroll animation -->
   <script>
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
@@ -280,11 +274,10 @@
     });
   </script>
 
-  <!-- Background music -->
   <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
   <script>
     const music = document.getElementById('bg-music');
-    music.volume = 0.03; // 3%
+    music.volume = 0.03;
     music.play().catch(() => console.log("Autoplay blocked"));
     window.addEventListener('click', () => {
       music.play().catch(() => console.log("Autoplay blocked"));
