@@ -151,6 +151,40 @@
       text-decoration: none;
     }
 
+    /* ⭐ FIXED BUTTONS — NOW THEY LOOK LIKE REAL BUTTONS ⭐ */
+
+    .wide-btn {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
+      transition: 0.25s;
+    }
+
+    .wide-btn:hover {
+      background: linear-gradient(90deg, #1a2c66, #5ba3ff);
+    }
+
+    .short-btn {
+      display: inline-block;
+      padding: 1rem 1.4rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      background: #4a90e2;
+      transition: 0.25s;
+    }
+
+    .short-btn:hover {
+      background: #6ab0ff;
+    }
+
     .bottom-buttons {
       display: flex;
       justify-content: center;
@@ -185,12 +219,27 @@
       transform: translateY(0);
     }
 
-    /* Button is now hidden */
     #play-music-btn {
-      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0d1b4c;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
+
+    #play-music-btn:hover {
+      background: #4a90e2;
     }
   </style>
 </head>
+
 <body>
 
   <header class="hero" id="hero">
@@ -215,115 +264,4 @@
       <div class="poem-line">In Syndicate,</div>
       <div class="poem-line">EVE won’t steal your time</div>
       <div class="poem-line">Our way,</div>
-      <div class="poem-line">we always try to get better</div>
-      <div class="poem-line">A timeless way to play and shine</div>
-      <div class="poem-line">This is our society,</div>
-      <div class="poem-line">this is how we fly</div>
-    </div>
-
-    <p style="margin-top:5rem; margin-bottom:5rem;">
-      Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.
-    </p>
-
-    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="main-cta">
-      New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost
-    </a>
-
-    <p style="margin-top:5rem; margin-bottom:5rem;">
-      New recruit pilots please check in-game Corp bulletin for top projects, guides and more.
-    </p>
-
-    <img src="https://web.ccpgamescdn.com/newssystem/media/73551/1/GIF_EVE_shipAd_brutix.gif"
-         alt="EVE Brutix GIF"
-         style="max-width:80%; border-radius:6px; margin-bottom:2rem;">
-
-    <div class="italic-center">
-      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
-    </div>
-
-    <p style="margin-top:5rem; margin-bottom:8rem;">
-      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
-    </p>
-
-    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
-
-    <div class="italic-center">
-      Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.
-    </div>
-
-    <p style="margin-top:5rem; margin-bottom:5rem;">
-      We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.
-    </p>
-
-    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
-    <p>View our guide-compendium linked in our Corp Bulletin.</p>
-
-    <div class="bottom-buttons">
-      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">New Pilot Briefing 🟦 Application Join</a>
-      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-btn" target="_blank">SYN.S History</a>
-    </div>
-
-    <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
-
-  </main>
-
-  <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3"></audio>
-
-  <!-- hidden button (unused now) -->
-  <button id="play-music-btn"></button>
-
-  <script>
-    const music = document.getElementById('bg-music');
-    let musicStarted = false;
-
-    function startMusic() {
-      if (musicStarted) return;
-      musicStarted = true;
-
-      music.volume = 0.02;
-      music.play().catch(() => {}); // Edge fails silently
-
-      // Fade out starting at 65 seconds
-      setTimeout(() => {
-        let fadeInterval = setInterval(() => {
-          if (music.volume > 0.001) {
-            music.volume -= 0.0025;
-          } else {
-            clearInterval(fadeInterval);
-          }
-        }, 200);
-      }, 65000);
-
-      // Stop at 70s
-      setTimeout(() => {
-        music.pause();
-        music.currentTime = 0;
-      }, 70000);
-    }
-
-    // Start music on any user click/tap/scroll
-    window.addEventListener('click', startMusic);
-    window.addEventListener('touchstart', startMusic);
-    window.addEventListener('scroll', startMusic);
-
-    // Poem scroll animation
-    const poemLines = document.querySelectorAll('.poem-line');
-    window.addEventListener('scroll', () => {
-      poemLines.forEach(line => {
-        if (line.getBoundingClientRect().top < window.innerHeight * 0.85) {
-          line.classList.add('visible');
-        }
-      });
-    });
-
-    // Hero parallax
-    const hero = document.getElementById('hero');
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroTranslate = Math.round(Math.min(scrollY / 2, 150));
-      hero.style.transform = `translateY(-${heroTranslate}px)`;
-    });
-  </script>
-
-</body>
-</html>
+      <div class="poem-line">we alway
