@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syndicate Society</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -140,6 +140,19 @@
       margin: 2rem 0;
     }
 
+    .poem-container {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      margin: 3rem 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .poem-container .spaced {
+      margin: 1.2rem 0; /* subtle spacing between lines */
+    }
+
     .wide-button, .short-button {
       display: inline-block;
       padding: 1rem 0;
@@ -187,6 +200,7 @@
       .container { width: 95%; padding: 1rem 0; }
       iframe { max-width: 100%; }
       .container img:first-of-type { max-width: 90%; }
+      .poem-container { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -210,6 +224,16 @@
 
     <div class="italic-center">
       Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
+    </div>
+
+    <!-- Poem section -->
+    <div class="poem-container">
+      <div>And here the stories carry on,</div>
+      <div class="spaced">Where real-life joys are never gone.</div>
+      <div class="spaced">In Syndicate, EVE won’t steal your time</div>
+      <div class="spaced">It’s easier AND smarter,</div>
+      <div class="spaced">A timeless way to play and shine.</div>
+      <div class="spaced">This is how we fly.</div>
     </div>
 
     <div class="text-center">
@@ -247,7 +271,6 @@
   <!-- Scroll animation -->
   <script>
     const hero = document.getElementById('hero');
-
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroTranslate = Math.min(scrollY / 2, 150);
