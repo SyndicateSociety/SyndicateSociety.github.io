@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syndicate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="assets/css/main.scss">
   <style>
     /* Body & global */
     body {
@@ -20,17 +18,36 @@
     .hero {
       background-color: #0d1b4c;
       color: white;
-      padding: 6rem 1rem;
+      padding: 3rem 1rem 1rem 1rem;
       width: 100%;
-      transition: padding 0.3s ease, transform 0.3s ease;
-      overflow: hidden; /* prevent floating effect */
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s ease; /* smooth shrinking */
+    }
+
+    /* Hero logo */
+    .hero-logo {
+      max-width: 100px;
+      margin: 0 auto 0.5rem auto;
+      display: block;
+      transition: all 0.4s ease;
     }
 
     /* Hero h1 */
     #hero-title {
       margin: 0;
       font-size: 4rem;
-      animation: fadeIn 2s ease-in forwards;
+      animation: fadeBlink 6s infinite;
+      transition: all 0.4s ease;
+    }
+
+    @keyframes fadeBlink {
+      0%, 74% { opacity: 1; transform: scale(1); }
+      75% { opacity: 0; transform: scale(0.95); }
+      76%, 100% { opacity: 1; transform: scale(1); }
     }
 
     /* Subtitle fade-in */
@@ -40,11 +57,7 @@
       margin-top: 0.5rem;
       animation: subtitleFade 0.5s ease-in forwards;
       animation-delay: 0.5s;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
+      transition: all 0.4s ease;
     }
 
     @keyframes subtitleFade {
@@ -64,61 +77,16 @@
       z-index: 1;
     }
 
-    /* Optional dotted pattern overlay */
-    .container::before {
-      content: "";
-      background-image: radial-gradient(black 1px, transparent 1px);
-      background-size: 10px 10px;
-      opacity: 0.05;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Centered italic text */
-    .italic-center {
-      font-style: italic;
-      margin: 1rem 0;
-    }
-
-    /* Centered non-italic text */
-    .text-center {
-      margin: 1rem 0;
-    }
-
-    /* Button style */
-    .wide-button {
-      display: inline-block;
-      width: 100%;
-      max-width: 800px;
-      padding: 1rem 0;
-      margin: 2rem 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: white;
-      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .wide-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    /* Images & videos centered */
+    /* Images & videos */
     img, iframe {
       display: block;
-      margin: 1rem auto;
-      max-width: 80%; /* smaller image to fit hero */
+      margin: 0 auto; /* no top/bottom spacing */
+      max-width: 80%;
       height: auto;
+    }
+
+    iframe {
+      aspect-ratio: 16/9; /* proper vertical ratio */
     }
 
     /* Paragraph styling */
@@ -127,28 +95,46 @@
       margin: 1rem 0;
     }
 
+    .italic-center {
+      font-style: italic;
+      margin: 1rem 0;
+    }
+
+    .text-center {
+      margin: 1rem 0;
+    }
+
+    /* Buttons */
+    .wide-button, .short-button {
+      display: inline-block;
+      padding: 1rem 0;
+      margin: 1rem 0.5rem 1rem 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background-color: #4a90e2;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .wide-button { width: 60%; }
+    .short-button { width: 35%; }
+
+    .wide-button:hover, .short-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
     /* Mobile responsiveness */
     @media (max-width: 600px) {
-      #hero-title {
-        font-size: 2.5rem;
-      }
-
-      #hero-subtitle {
-        font-size: 1rem;
-      }
-
-      .container {
-        width: 95%;
-        padding: 1rem 0;
-      }
-
-      .wide-button {
-        font-size: 1rem;
-      }
-
-      img {
-        max-width: 95%;
-      }
+      #hero-title { font-size: 2.5rem; }
+      #hero-subtitle { font-size: 1rem; }
+      .container { width: 95%; padding: 1rem 0; }
+      img { max-width: 95%; }
+      .wide-button, .short-button { width: 90%; display: block; margin: 0.5rem auto; }
     }
   </style>
 </head>
@@ -156,72 +142,69 @@
 
   <!-- Hero section -->
   <header class="hero">
+    <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
     <h1 id="hero-title">Syndicate Society</h1>
     <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
   </header>
 
   <!-- Scrollable content -->
   <main class="container">
-    <!-- Image -->
     <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
+    <div class="italic-center">Welcome home, pilot! Here you can breathe, log in, and fly EVE the way it’s meant to be played.</div>
 
-    <!-- Caption below image -->
-    <div class="italic-center">
-      Welcome home, pilot! Here you can breathe, log in, and fly EVE the way it’s meant to be played.
-    </div>
-
-    <!-- Centered non-italic text -->
     <div class="text-center">
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
-      <!-- Wide button -->
-      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">
-        New to EVE? Get YOUR Free Skill boost here 🖐️
-      </a>
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Get your Free Skillpoint boost here 🖐️</a>
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
     </div>
 
-    <!-- Italic text -->
-    <div class="italic-center">
-      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
-    </div>
+    <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
 
     <p>In Syndicate Society, EVE is a hobby, not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
 
-    <!-- Embedded YouTube video -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
+    <!-- YouTube Video -->
+    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
 
-    <div class="italic-center">
-      Pilot, Syndicate is your bastion, a place to gather strength, a home to become you.
-    </div>
+    <div class="italic-center">Pilot, Syndicate is your bastion, a place to gather strength, a home to become you.</div>
 
     <p>We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
-
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
-
     <p>View our guide-compendium linked in our Corp Bulletin.</p>
 
-    <div class="content-center">
-      (SYN.S circa 2011. 2015. 2024+)
+    <!-- Bottom buttons -->
+    <div style="display:flex; justify-content:center; flex-wrap:wrap;">
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button">SYN.S History</a>
     </div>
+
+    <div class="content-center">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
-  <footer class="site-footer"></footer>
+  <footer></footer>
 
   <!-- Scroll behavior JS -->
   <script>
     const hero = document.querySelector('.hero');
     const title = document.getElementById('hero-title');
+    const subtitle = document.getElementById('hero-subtitle');
+    const logo = document.querySelector('.hero-logo');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
 
-      // Shrink hero height and font more compactly
-      const heroHeight = Math.max(30, 300 - scrollY); // min padding smaller
-      hero.style.padding = heroHeight/2 + 'px 1rem';
+      // Hero shrink effect
+      const newPadding = Math.max(10, 80 - scrollY / 5);
+      hero.style.padding = newPadding + 'px 1rem 1rem 1rem';
 
-      // Shrink hero font smoothly
-      const fontSize = Math.max(1.5, 4 - scrollY/150);
-      title.style.fontSize = fontSize + 'rem';
+      // Shrink logo and title
+      const logoScale = Math.max(0.5, 1 - scrollY / 800);
+      logo.style.transform = `scale(${logoScale})`;
+      const titleScale = Math.max(0.6, 1 - scrollY / 800);
+      title.style.transform = `scale(${titleScale})`;
+
+      // Subtitle fade out gradually after some scroll
+      const subtitleOpacity = Math.max(0, 1 - scrollY / 200);
+      subtitle.style.opacity = subtitleOpacity;
     });
   </script>
 
