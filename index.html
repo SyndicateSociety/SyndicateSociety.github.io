@@ -300,7 +300,6 @@
       });
     });
 
-    // Remove hero shaking: keep only transform, no padding change
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -308,9 +307,9 @@
       hero.style.transform = `translateY(-${heroTranslate}px)`;
     });
 
-    // Background music
+    // Background music at 2%
     const music = document.getElementById('bg-music');
-    music.volume = 0.04;
+    music.volume = 0.02;
     music.play().catch(() => console.log("Autoplay blocked"));
     window.addEventListener('click', () => { music.play().catch(() => console.log("Autoplay blocked")); }, { once: true });
   </script>
