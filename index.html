@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syndicate Society</title>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Edu+NSW+ACT+Cursive&display=swap" rel="stylesheet">
 
@@ -14,18 +14,27 @@
       padding: 0;
       font-family: 'Roboto', sans-serif;
       text-align: center;
+      background: #ffffff;
       position: relative;
       overflow-x: hidden;
-
-      background-color: #fefdf7;
-      background-image:
-        radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-        radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
-      background-size: 12px 12px, 6px 6px;
-      background-position: 0 0, 3px 3px;
     }
 
-    /* Hero section */
+    /* Soft dotted/speckled background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 12px 12px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Hero */
     .hero {
       background-color: #0d1b4c;
       color: white;
@@ -36,8 +45,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: height 0.8s ease, padding 0.8s ease;
     }
 
+    /* Video background */
     .hero-video {
       position: absolute;
       top: 0;
@@ -54,44 +65,155 @@
       z-index: 1;
     }
 
-    .hero-logo { max-width: 100px; margin: 0 auto 0.5rem auto; opacity: 0; animation: logoFadeIn 2s forwards; animation-delay: 0.3s; }
-    @keyframes logoFadeIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
-
-    #hero-title { margin: 0; font-size: 4rem; opacity: 0; animation: fadeLoop 5.75s infinite; transform: translateZ(0); }
-    @keyframes fadeLoop { 0% { opacity: 0; } 20% { opacity: 1; } 50% { opacity: 1; } 65% { opacity: 0; } 67% { opacity: 0; } 100% { opacity: 1; } }
-
-    #hero-subtitle { opacity: 0; font-style: italic; margin-top: 0.5rem; animation: subtitleFade 2s forwards; animation-delay: 1s; transform: translateZ(0); }
-    @keyframes subtitleFade { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
-
-    .container { max-width: 1000px; width: 90%; margin: 0 auto; padding: 2rem 0; color: black; position: relative; z-index: 1; }
-
-    .container img:first-of-type { max-width: 80%; width: 100%; margin-top: 0.5rem; margin-bottom: 0.6rem; border-radius: 6px; }
-
-    iframe { aspect-ratio: 16/9; max-width: 70%; width: 100%; margin: 0 auto; display: block; }
-
-    p { line-height: 1.8; margin: 2rem 0; }
-    .italic-center { font-style: italic; margin: 1rem 0; }
-
-    /* Poem styles */
-    .poem-container { font-family: 'Edu NSW ACT Cursive', cursive; font-size: 1.6rem; line-height: 1.6; margin: 3rem 0; text-align: center; color: #333; }
-    .poem-container .poem-spacer { height: 1.2rem; }
-    .poem-container .poem-line { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-    .poem-container .poem-line.visible { opacity: 1; transform: translateY(0); }
-
-    /* GIF container */
-    .poem-gif-container { width: 55px; height: auto; margin: 0 auto; }
-    .poem-gif-container img { width: 100%; height: auto; display: block; }
-
-    .wide-button, .short-button {
-      display: inline-block; padding: 1rem 0; margin: 1rem 0.5rem; font-size: 1.1rem; font-weight: bold; color: white;
-      border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .hero-logo {
+      max-width: 100px;
+      margin: 0 auto 0.5rem auto;
+      opacity: 0;
+      animation: logoFadeIn 2s forwards;
+      animation-delay: 0.3s;
     }
+
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    #hero-title {
+      margin: 0;
+      font-size: 4rem;
+      opacity: 0;
+      animation: fadeLoop 5.75s infinite;
+    }
+
+    @keyframes fadeLoop {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      50% { opacity: 1; }
+      65% { opacity: 0; }
+      67% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    #hero-subtitle {
+      opacity: 0;
+      font-style: italic;
+      margin-top: 0.5rem;
+      animation: subtitleFade 2s forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes subtitleFade {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 2rem 0;
+      color: black;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container img:first-of-type {
+      max-width: 80%;
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 0.6rem;
+      border-radius: 6px;
+    }
+
+    iframe {
+      aspect-ratio: 16/9;
+      max-width: 70%;
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+
+    p {
+      line-height: 1.8;
+      margin: 2.3rem 0;
+    }
+
+    .italic-center {
+      font-style: italic;
+      margin: 1.2rem 0;
+    }
+
+    .text-center { margin: 2rem 0; }
+
+    /* Buttons */
+    .wide-button, .short-button {
+      display: inline-block;
+      padding: 1rem 0;
+      margin: 1rem 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
     .wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
     .short-button { width: 35%; background-color: #4a90e2; }
+
     .wide-button:hover, .short-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
     .bottom-buttons { display:flex; justify-content:center; flex-wrap:wrap; margin-bottom: 3rem; }
     .footer-text { font-size: 0.85rem; margin-bottom: 2rem; }
+
+    /* Poem container */
+    .poem-container {
+      font-family: 'Edu NSW ACT Cursive', cursive;
+      font-size: 1.6rem;
+      line-height: 1.6;
+      margin: 3rem 0;
+      text-align: center;
+      color: #333;
+    }
+
+    .poem-container .poem-spacer { height: 2rem; } /* double space between lines */
+
+    .poem-container .poem-line {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+
+    .poem-container .poem-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* GIF container for Tenor GIF */
+    .poem-gif-container {
+      width: 80px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .poem-gif-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Spacing helpers */
+    .spacing-25 { margin-top: 25%; }
+    .spacing-35 { margin-top: 35%; }
+    .spacing-45 { margin-top: 45%; }
+    .spacing-50 { margin-top: 50%; }
+    .spacing-60 { margin-top: 60%; }
+    .spacing-bottom-25 { margin-bottom: 25%; }
+    .spacing-bottom-35 { margin-bottom: 35%; }
+    .spacing-bottom-45 { margin-bottom: 45%; }
+    .spacing-bottom-50 { margin-bottom: 50%; }
 
     @media (max-width: 600px) {
       #hero-title { font-size: 2.5rem; }
@@ -100,116 +222,116 @@
       iframe { max-width: 100%; }
       .container img:first-of-type { max-width: 90%; }
       .poem-container { font-size: 1.4rem; }
-      .poem-gif-container { width: 40px; }
+      .poem-gif-container { width: 55px; }
     }
   </style>
 </head>
 
 <body>
-<header class="hero" id="hero">
-  <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
-  <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
-  <h1 id="hero-title">Syndicate Society</h1>
-  <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
-</header>
+  <header class="hero" id="hero">
+    <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
+    <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
+    <h1 id="hero-title">Syndicate Society</h1>
+    <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
+  </header>
 
-<main class="container">
-  <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
+  <main class="container">
+    <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
 
-  <div class="italic-center">
-    Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
-  </div>
-
-  <!-- Poem Section -->
-  <div class="poem-container">
-    <div class="poem-line">And here</div>
-    <div class="poem-line">the stories carry on,</div>
-    <div class="poem-spacer"></div>
-    <div class="poem-line">Where real-life joys are never gone.</div>
-    <div class="poem-spacer"></div>
-    <div class="poem-line">In Syndicate,</div>
-    <div class="poem-line">EVE won’t steal your time</div>
-    <div class="poem-spacer"></div>
-    <div class="poem-line">Our way,</div>
-    <div class="poem-line">we always try to get better</div>
-    <div class="poem-spacer"></div>
-    <div class="poem-line">A timeless way to play and shine</div>
-    <div class="poem-spacer"></div>
-    <div class="poem-line">This is our society,</div>
-    <div class="poem-line">this is how we fly</div>
-
-    <!-- Small GIF directly after the poem -->
-    <div class="poem-gif-container">
-      <img src="https://media1.tenor.com/m/-izpKmuJhugAAAAd/dailygarabato-mikelmats.gif" alt="Dailygarabato GIF">
+    <div class="italic-center">
+      Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
     </div>
-  </div>
 
-  <!-- Main content -->
-  <div class="text-center" style="margin-top: 3rem;">
-    <p style="margin-top: 0;">Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
+    <!-- Poem Section -->
+    <div class="poem-container">
+      <div class="poem-line">And here</div>
+      <div class="poem-line">the stories carry on,</div>
+      <div class="poem-spacer"></div>
 
-    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
+      <div class="poem-line">Where real-life joys are never gone.</div>
+      <div class="poem-spacer"></div>
 
-    <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+      <div class="poem-line">In Syndicate,</div>
+      <div class="poem-line">EVE won’t steal your time</div>
+      <div class="poem-spacer"></div>
 
-    <div class="italic-center" style="margin-top: 1.5rem;">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
+      <div class="poem-line">Our way,</div>
+      <div class="poem-line">we always try to get better</div>
+      <div class="poem-spacer"></div>
 
-    <p style="margin-top: 2rem; margin-bottom: 1rem;">In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
-  </div>
+      <div class="poem-line">A timeless way to play and shine</div>
+      <div class="poem-spacer"></div>
 
-  <!-- YouTube video -->
-  <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
+      <div class="poem-line">This is our society,</div>
+      <div class="poem-line">this is how we fly</div>
 
-  <!-- Video note -->
-  <div class="italic-center" style="margin-top: 1.5rem;">Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.</div>
+      <div class="poem-gif-container">
+        <img src="https://media1.tenor.com/m/-izpKmuJhugAAAAd/dailygarabato-mikelmats.gif" alt="Dailygarabato GIF">
+      </div>
+    </div>
 
-  <p style="margin-top: 2rem;">We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
+    <!-- Main content -->
+    <div class="text-center spacing-45">
+      <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button spacing-45">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
+      <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+      <div class="italic-center spacing-25">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
+      <p class="spacing-25 spacing-bottom-25">In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
+    </div>
 
-  <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
+    <!-- YouTube video -->
+    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
 
-  <p>View our guide-compendium linked in our Corp Bulletin.</p>
+    <!-- Video note -->
+    <div class="italic-center spacing-35">Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.</div>
 
-  <div class="bottom-buttons">
-    <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
-    <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
-  </div>
+    <p class="spacing-50">We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
 
-  <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
-</main>
+    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
+    <p>View our guide-compendium linked in our Corp Bulletin.</p>
 
-<!-- Poem scroll animation -->
-<script>
-  const poemLines = document.querySelectorAll('.poem-line');
-  window.addEventListener('scroll', () => {
-    poemLines.forEach(line => {
-      const top = line.getBoundingClientRect().top;
-      if(top < window.innerHeight * 0.85){
-        line.classList.add('visible');
-      }
+    <div class="bottom-buttons">
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
+    </div>
+
+    <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
+  </main>
+
+  <!-- Poem scroll animation -->
+  <script>
+    const poemLines = document.querySelectorAll('.poem-line');
+    window.addEventListener('scroll', () => {
+      poemLines.forEach(line => {
+        const top = line.getBoundingClientRect().top;
+        if(top < window.innerHeight * 0.85){
+          line.classList.add('visible');
+        }
+      });
     });
-  });
-</script>
+  </script>
 
-<script>
-  const hero = document.getElementById('hero');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroTranslate = Math.min(scrollY / 2, 150);
-    hero.style.transform = `translateY(-${heroTranslate}px)`;
-    const newPadding = Math.max(20, 8*16 - scrollY / 10);
-    hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
-  });
-</script>
+  <!-- Hero scroll animation -->
+  <script>
+    const hero = document.getElementById('hero');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const heroTranslate = Math.min(scrollY / 2, 150);
+      hero.style.transform = `translateY(-${heroTranslate}px)`;
+      const newPadding = Math.max(20, 8*16 - scrollY / 10);
+      hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
+    });
+  </script>
 
-<audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
-<script>
-  const music = document.getElementById('bg-music');
-  music.volume = 0.03;
-  music.play().catch(() => console.log("Autoplay blocked"));
-  window.addEventListener('click', () => {
+  <!-- Background music -->
+  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
+  <script>
+    const music = document.getElementById('bg-music');
+    music.volume = 0.03;
     music.play().catch(() => console.log("Autoplay blocked"));
-  }, { once: true });
-</script>
-
+    window.addEventListener('click', () => {
+      music.play().catch(() => console.log("Autoplay blocked"));
+    }, { once: true });
+  </script>
 </body>
 </html>
