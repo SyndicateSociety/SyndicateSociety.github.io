@@ -191,8 +191,10 @@
       margin: 3rem 0;
     }
 
+    /* Footer */
     .footer-text {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      color: #555;
       margin-bottom: 2rem;
     }
 
@@ -236,7 +238,6 @@
       background: #4a90e2;
     }
 
-    /* ⭐ GIF + PARAGRAPH SECTION ⭐ */
     .gif-text-section {
       display: flex;
       align-items: center;
@@ -273,36 +274,41 @@
         flex-direction: column;
         text-align: center;
       }
-
       .gif-text-section p {
         max-width: 100%;
         flex: none;
       }
-
       .gif-text-section .gif-container {
         max-width: 100%;
         flex: none;
       }
-
       .gif-text-section img {
         max-width: 80%;
       }
     }
 
-    /* ⭐ Featured Games Section ⭐ */
     .featured-games {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0; /* no spacing between games */
-      margin: 3rem 0 5rem 0;
+      gap: 0;
+      margin: 2rem 0 5rem 0;
+    }
+
+    .featured-games-heading {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #0d1b4c;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
     }
 
     .featured-game {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 0;
+      margin: 0.5rem 0;
       width: 70%;
       max-width: 500px;
     }
@@ -323,7 +329,6 @@
 
   </style>
 </head>
-
 <body>
 
   <header class="hero" id="hero">
@@ -378,15 +383,13 @@
       In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid‑back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
     </p>
 
-    <!-- ⭐ New Heading Above GIF Section ⭐ -->
     <h3 style="margin-bottom:2rem; font-size:1.4rem; color:#0d1b4c;">
       Veteran? Casual gamer, disabled gamer? Syndicate welcomes you. 15+ Years strong.
     </h3>
 
     <div class="gif-text-section">
       <div class="gif-container">
-        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzhicnl4cGhrb3FtbzBpajAxdnczcTZhdTJpaHIybWk5dHhzM2l2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SWVvQIBDkNyGL9rIzz/giphy.gif"
-             alt="Casual gaming GIF">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzhicnl4cGhrb3FtbzBpajAxdnczcTZhdTJpaHIybWk5dHhzM2l2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SWVvQIBDkNyGL9rIzz/giphy.gif" alt="Casual gaming GIF">
       </div>
       <p>
         Syndicate welcomes the casual gamers—the ones who get home after a long day of work and just want to log in to spin ships or relax. This EVE Online corporation also warmly welcomes disabled pilots and veterans. Voice comms are never mandatory (only occasionally for big operations), keeping the experience simple and enjoyable. If you like a quiet, simple environment, this place is perfect for you.
@@ -406,21 +409,23 @@
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in‑game.</p>
     <p>View our guide‑compendium linked in our Corp Bulletin.</p>
 
-    <!-- ⭐ Bottom Buttons ⭐ -->
     <div class="bottom-buttons">
       <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">
         New Pilot Briefing 🟦 Application Join
       </a>
-      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/"
-         class="short-btn" target="_blank">
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-btn" target="_blank">
         SYN.S History
       </a>
     </div>
 
+    <!-- Footer -->
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
 
-    <!-- ⭐ Featured Games Section ⭐ -->
+    <!-- Featured Games Section -->
     <div class="featured-games">
+      <p class="featured-games-heading">
+        Syndicate also welcomes members from EVE Online's Steam community, as well as other games featured below:
+      </p>
       <div class="featured-game">
         <img src="https://www.lgcguild.com/wp-content/uploads/2022/04/FoxholeLogo01-1024x352.webp" alt="Foxhole Game">
         <p>Foxhole</p>
