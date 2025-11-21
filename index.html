@@ -298,11 +298,11 @@
     const music = document.getElementById('bg-music');
     music.volume = 0.02;
 
-    // Stop music after 35 seconds
+    // Stop music after 70 seconds (1 minute 10 seconds)
     setTimeout(() => {
       music.pause();
       music.currentTime = 0;
-    }, 95000);
+    }, 70000);
 
     // Poem animation on scroll
     const poemLines = document.querySelectorAll('.poem-line');
