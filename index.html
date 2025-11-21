@@ -55,15 +55,12 @@
     }
 
     .hero-logo { max-width: 100px; margin: 0 auto 0.5rem auto; opacity: 0; animation: logoFadeIn 2s forwards; animation-delay: 0.3s; }
-
     @keyframes logoFadeIn { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
 
     #hero-title { margin: 0; font-size: 4rem; opacity: 0; animation: fadeLoop 5.75s infinite; transform: translateZ(0); }
-
     @keyframes fadeLoop { 0% { opacity: 0; } 20% { opacity: 1; } 50% { opacity: 1; } 65% { opacity: 0; } 67% { opacity: 0; } 100% { opacity: 1; } }
 
     #hero-subtitle { opacity: 0; font-style: italic; margin-top: 0.5rem; animation: subtitleFade 2s forwards; animation-delay: 1s; transform: translateZ(0); }
-
     @keyframes subtitleFade { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
 
     .container { max-width: 1000px; width: 90%; margin: 0 auto; padding: 2rem 0; color: black; position: relative; z-index: 1; }
@@ -73,34 +70,27 @@
     iframe { aspect-ratio: 16/9; max-width: 70%; width: 100%; margin: 0 auto; display: block; }
 
     p { line-height: 1.8; margin: 2rem 0; }
-
     .italic-center { font-style: italic; margin: 1rem 0; }
 
     /* Poem styles */
     .poem-container { font-family: 'Edu NSW ACT Cursive', cursive; font-size: 1.6rem; line-height: 1.6; margin: 3rem 0; text-align: center; color: #333; }
-
     .poem-container .poem-spacer { height: 1.2rem; }
-
     .poem-container .poem-line { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-
     .poem-container .poem-line.visible { opacity: 1; transform: translateY(0); }
 
     /* GIF container */
-    .poem-gif-container { margin: 0; }
-    .poem-gif-container img { width: 55px; height: auto; display: block; margin: 0 auto; }
+    .poem-gif-container { width: 55px; height: auto; margin: 0 auto; }
+    .poem-gif-container img { width: 100%; height: auto; display: block; }
 
     .wide-button, .short-button {
       display: inline-block; padding: 1rem 0; margin: 1rem 0.5rem; font-size: 1.1rem; font-weight: bold; color: white;
       border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
     .short-button { width: 35%; background-color: #4a90e2; }
-
     .wide-button:hover, .short-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
     .bottom-buttons { display:flex; justify-content:center; flex-wrap:wrap; margin-bottom: 3rem; }
-
     .footer-text { font-size: 0.85rem; margin-bottom: 2rem; }
 
     @media (max-width: 600px) {
@@ -110,13 +100,12 @@
       iframe { max-width: 100%; }
       .container img:first-of-type { max-width: 90%; }
       .poem-container { font-size: 1.4rem; }
-      .poem-gif-container img { width: 40px; }
+      .poem-gif-container { width: 40px; }
     }
   </style>
 </head>
 
 <body>
-
 <header class="hero" id="hero">
   <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
   <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
@@ -149,7 +138,7 @@
     <div class="poem-line">This is our society,</div>
     <div class="poem-line">this is how we fly</div>
 
-    <!-- GIF container -->
+    <!-- Small GIF directly after the poem -->
     <div class="poem-gif-container">
       <img src="https://media1.tenor.com/m/-izpKmuJhugAAAAd/dailygarabato-mikelmats.gif" alt="Dailygarabato GIF">
     </div>
@@ -168,8 +157,10 @@
     <p style="margin-top: 2rem; margin-bottom: 1rem;">In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
   </div>
 
+  <!-- YouTube video -->
   <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
 
+  <!-- Video note -->
   <div class="italic-center" style="margin-top: 1.5rem;">Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.</div>
 
   <p style="margin-top: 2rem;">We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
