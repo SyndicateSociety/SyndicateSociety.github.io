@@ -155,8 +155,12 @@
     }
 
     .poem-spacer {
-      height: 1.5rem; /* Double spacing between sections */
+      height: 1.5rem;
     }
+
+    /* Extra spacers for paragraphs & buttons */
+    .spacer-large { margin-top: 3.9rem; margin-bottom: 3.9rem; } /* 30% more than 3rem */
+    .spacer-medium { margin-top: 2.6rem; margin-bottom: 2.6rem; } /* 30% more than 2rem */
 
     .wide-button, .short-button {
       display: inline-block;
@@ -258,19 +262,16 @@
       <div class="poem-line">this is how we fly</div>
     </div>
 
-    <div class="text-center">
-      <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
+    <!-- Paragraphs with more spacing -->
+    <p class="spacer-large">Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
 
-      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
+    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button spacer-medium">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
 
-      <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+    <p class="spacer-large">New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
 
-      <div class="italic-center">
-        For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
-      </div>
+    <div class="italic-center spacer-large">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
 
-      <p>In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
-    </div>
+    <p>In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
 
     <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
 
@@ -306,7 +307,6 @@
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const target = entry.target;
-          // Add visible class with staggered delay
           setTimeout(() => target.classList.add('visible'), Array.from(lines).indexOf(target) * 200);
           observer.unobserve(target);
         }
