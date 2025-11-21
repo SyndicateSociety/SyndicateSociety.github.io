@@ -48,7 +48,7 @@
       margin: 0;
       font-size: 4rem;
       opacity: 0;
-      animation: titleFade 3s forwards, fadeBlink 6s infinite;
+      animation: titleFade 1s forwards, fadeBlink 6s infinite;
       animation-delay: 0.5s;
       transition: all 0.4s ease;
     }
@@ -59,8 +59,8 @@
     }
 
     @keyframes fadeBlink {
-      0%, 65% { opacity: 1; transform: scale(1); }
-      66%, 100% { opacity: 0.3; transform: scale(0.98); }
+      0%, 60% { opacity: 1; transform: scale(1); }
+      61%, 100% { opacity: 0; transform: scale(0.98); }
     }
 
     /* Subtitle fade-in */
@@ -105,16 +105,16 @@
     /* Paragraph styling */
     p {
       line-height: 1.8;
-      margin: 2rem 0; 
+      margin: 2.5rem 0; 
     }
 
     .italic-center {
       font-style: italic;
-      margin: 2rem 0; 
+      margin: 2.5rem 0; 
     }
 
     .text-center {
-      margin: 2rem 0;
+      margin: 2.5rem 0;
     }
 
     /* Buttons */
@@ -133,8 +133,8 @@
     }
 
     .wide-button {
-      width: 65%; /* slightly wider */
-      background: linear-gradient(90deg, #0d1b4c, #4a90e2); /* dark to light blue gradient */
+      width: 68%; /* slightly wider */
+      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
     }
 
     .short-button { width: 35%; background-color: #4a90e2; }
@@ -184,7 +184,7 @@
 
     <div class="text-center">
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
-      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Proceed here and click Log In To Become A Recruit - Get your Free Skill Boost</a>
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
 
       <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
@@ -203,8 +203,8 @@
 
     <!-- Bottom buttons -->
     <div class="bottom-buttons">
-      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button">New Pilot Briefing 🟦 Application Join</a>
-      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button">SYN.S History</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
     </div>
 
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
@@ -236,6 +236,14 @@
       const subtitleOpacity = Math.max(0, 1 - scrollY / 200);
       subtitle.style.opacity = subtitleOpacity;
     });
+  </script>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" autoplay loop></audio>
+  <script>
+    const music = document.getElementById('bg-music');
+    music.volume = 0.3; // 30% volume
+    music.play().catch(() => { console.log("Autoplay blocked, user interaction required."); });
   </script>
 
 </body>
