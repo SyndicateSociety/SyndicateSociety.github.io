@@ -151,7 +151,6 @@
       text-decoration: none;
     }
 
-    /* ⭐ FIXED BOTTOM BUTTONS ⭐ */
     .wide-btn {
       display: inline-block;
       padding: 1rem 2.2rem;
@@ -237,7 +236,7 @@
       background: #4a90e2;
     }
 
-    /* ⭐ NEW GIF + PARAGRAPH SECTION ⭐ */
+    /* ⭐ NEW GIF + PARAGRAPH SECTION (resized) ⭐ */
     .gif-text-section {
       display: flex;
       align-items: center;
@@ -247,17 +246,26 @@
       flex-wrap: wrap;
     }
 
-    .gif-text-section img {
-      max-width: 65%; /* Reduced GIF size */
-      border-radius: 8px;
+    .gif-text-section .gif-container {
+      flex: 0 0 65%; /* Force gif container to be 65% of the flex row */
+      max-width: 65%;
+    }
+
+    .gif-text-section .gif-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 1;
     }
 
     .gif-text-section p {
-      max-width: 600px;
+      flex: 1 1 35%;
+      max-width: 35%;
       text-align: left;
       font-size: 1rem;
       line-height: 1.6;
       color: #333;
+      min-width: 180px;
     }
 
     @media (max-width: 768px) {
@@ -267,7 +275,17 @@
       }
 
       .gif-text-section p {
-        text-align: center;
+        max-width: 100%;
+        flex: none;
+      }
+
+      .gif-text-section .gif-container {
+        max-width: 100%;
+        flex: none;
+      }
+
+      .gif-text-section img {
+        max-width: 80%; /* smaller on mobile for GIF */
       }
     }
   </style>
@@ -312,7 +330,7 @@
     </a>
 
     <p style="margin-top:5rem; margin-bottom:5rem;">
-      New recruit pilots please check in-game Corp bulletin for top projects, guides and more.
+      New recruit pilots please check in‑game Corp bulletin for top projects, guides and more.
     </p>
 
     <img src="https://web.ccpgamescdn.com/newssystem/media/73551/1/GIF_EVE_shipAd_brutix.gif"
@@ -320,16 +338,18 @@
          style="max-width:80%; border-radius:6px; margin-bottom:2rem;">
 
     <div class="italic-center">
-      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
+      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey‑loving and great capsuleers.
     </div>
 
     <p style="margin-top:5rem; margin-bottom:8rem;">
-      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
+      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid‑back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
     </p>
 
-    <!-- ⭐ NEW GIF + TEXT SECTION ⭐ -->
     <div class="gif-text-section">
-      <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzhicnl4cGhrb3FtbzBpajAxdnczcTZhdTJpaHIybWk5dHhzM2l2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SWVvQIBDkNyGL9rIzz/giphy.gif" alt="Casual gaming GIF">
+      <div class="gif-container">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzhicnl4cGhrb3FtbzBpajAxdnczcTZhdTJpaHIybWk5dHhzM2l2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SWVvQIBDkNyGL9rIzz/giphy.gif"
+             alt="Casual gaming GIF">
+      </div>
       <p>
         Syndicate welcomes the casual gamers—the ones who get home after a long day of work and just want to log in to spin ships or relax. This EVE Online corporation also warmly welcomes disabled pilots and veterans. Voice comms are never mandatory (only occasionally for big operations), keeping the experience simple and enjoyable for everyone.
       </p>
@@ -342,17 +362,16 @@
     </div>
 
     <p style="margin-top:5rem; margin-bottom:5rem;">
-      We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.
+      We welcome players with busy lives outside the game—people who can’t commit to EVE full‑time, but still want to explore its vast universe and steadily expand their horizons.
     </p>
 
-    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
-    <p>View our guide-compendium linked in our Corp Bulletin.</p>
+    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in‑game.</p>
+    <p>View our guide‑compendium linked in our Corp Bulletin.</p>
 
     <div class="bottom-buttons">
       <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">
         New Pilot Briefing 🟦 Application Join
       </a>
-
       <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/"
          class="short-btn" target="_blank">
         SYN.S History
@@ -364,13 +383,11 @@
   </main>
 
   <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3"></audio>
-
   <button id="play-music-btn">Play Music 🎵</button>
 
   <script>
     const music = document.getElementById('bg-music');
     const btn = document.getElementById('play-music-btn');
-
     let musicStarted = false;
 
     btn.addEventListener('click', () => {
