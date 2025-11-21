@@ -291,30 +291,12 @@
   </main>
 
   <!-- Background Music Audio -->
-  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
-
-  <!-- Play Music Overlay -->
-  <div id="play-music-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,0.5);z-index:9999;">
-    <button id="play-music-btn" style="padding:1rem 2rem;font-size:1.5rem;">Play Music</button>
-  </div>
+  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop autoplay></audio>
 
   <script>
-    // Music setup
+    // Set music volume to 2%
     const music = document.getElementById('bg-music');
-    music.volume = 0.02; // 2%
-
-    const overlay = document.getElementById('play-music-overlay');
-    const btn = document.getElementById('play-music-btn');
-
-    btn.addEventListener('click', () => {
-      music.play().catch(() => console.log("Autoplay blocked"));
-      overlay.style.display = 'none';
-    });
-
-    // Fallback: autoplay attempt on first click anywhere
-    window.addEventListener('click', () => {
-      music.play().catch(() => console.log("Autoplay blocked"));
-    }, { once: true });
+    music.volume = 0.02;
 
     // Poem animation on scroll
     const poemLines = document.querySelectorAll('.poem-line');
