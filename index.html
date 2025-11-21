@@ -25,7 +25,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.4s ease; /* smooth shrinking */
+      transition: all 0.4s ease;
     }
 
     /* Hero logo */
@@ -33,21 +33,34 @@
       max-width: 100px;
       margin: 0 auto 0.5rem auto;
       display: block;
-      transition: all 0.4s ease;
+      opacity: 0;
+      animation: logoFadeIn 2s forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     /* Hero h1 */
     #hero-title {
       margin: 0;
       font-size: 4rem;
-      animation: fadeBlink 6s infinite;
+      opacity: 0;
+      animation: titleFade 3s forwards, fadeBlink 6s infinite;
+      animation-delay: 0.5s;
       transition: all 0.4s ease;
     }
 
+    @keyframes titleFade {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
     @keyframes fadeBlink {
-      0%, 74% { opacity: 1; transform: scale(1); }
-      75% { opacity: 0; transform: scale(0.95); }
-      76%, 100% { opacity: 1; transform: scale(1); }
+      0%, 65% { opacity: 1; transform: scale(1); }
+      66%, 100% { opacity: 0.3; transform: scale(0.98); }
     }
 
     /* Subtitle fade-in */
@@ -55,14 +68,14 @@
       opacity: 0;
       font-style: italic;
       margin-top: 0.5rem;
-      animation: subtitleFade 0.5s ease-in forwards;
-      animation-delay: 0.5s;
+      animation: subtitleFade 2s forwards;
+      animation-delay: 1s;
       transition: all 0.4s ease;
     }
 
     @keyframes subtitleFade {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* Container for content */
@@ -80,28 +93,28 @@
     /* Images & videos */
     img, iframe {
       display: block;
-      margin: 0 auto; /* no top/bottom spacing */
+      margin: 0 auto; 
       max-width: 80%;
       height: auto;
     }
 
     iframe {
-      aspect-ratio: 16/9; /* proper vertical ratio */
+      aspect-ratio: 16/9; 
     }
 
     /* Paragraph styling */
     p {
-      line-height: 1.6;
-      margin: 1rem 0;
+      line-height: 1.8;
+      margin: 2rem 0; 
     }
 
     .italic-center {
       font-style: italic;
-      margin: 1rem 0;
+      margin: 2rem 0; 
     }
 
     .text-center {
-      margin: 1rem 0;
+      margin: 2rem 0;
     }
 
     /* Buttons */
@@ -112,7 +125,6 @@
       font-size: 1.1rem;
       font-weight: bold;
       color: white;
-      background-color: #4a90e2;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -120,12 +132,30 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .wide-button { width: 60%; }
-    .short-button { width: 35%; }
+    .wide-button {
+      width: 65%; /* slightly wider */
+      background: linear-gradient(90deg, #0d1b4c, #4a90e2); /* dark to light blue gradient */
+    }
+
+    .short-button { width: 35%; background-color: #4a90e2; }
 
     .wide-button:hover, .short-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Space between bottom buttons and footer text */
+    .bottom-buttons {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom: 3rem;
+    }
+
+    /* Smaller footer text */
+    .footer-text {
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
     }
 
     /* Mobile responsiveness */
@@ -154,13 +184,13 @@
 
     <div class="text-center">
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
-      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Get your Free Skillpoint boost here 🖐️</a>
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Proceed here and click Log In To Become A Recruit - Get your Free Skill Boost</a>
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+
+      <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
+
+      <p>In Syndicate Society, EVE is a hobby, not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
     </div>
-
-    <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
-
-    <p>In Syndicate Society, EVE is a hobby, not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
 
     <!-- YouTube Video -->
     <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
@@ -172,12 +202,12 @@
     <p>View our guide-compendium linked in our Corp Bulletin.</p>
 
     <!-- Bottom buttons -->
-    <div style="display:flex; justify-content:center; flex-wrap:wrap;">
+    <div class="bottom-buttons">
       <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button">New Pilot Briefing 🟦 Application Join</a>
       <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button">SYN.S History</a>
     </div>
 
-    <div class="content-center">(SYN.S circa 2011. 2015. 2024+)</div>
+    <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
   <footer></footer>
