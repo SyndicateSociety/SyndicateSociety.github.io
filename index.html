@@ -418,6 +418,9 @@
       </a>
     </div>
 
+    <!-- Spacer / Breather Room -->
+<div style="height: 6rem;"></div>
+
 
     <!-- Featured Games Section -->
     <div class="featured-games">
@@ -469,18 +472,50 @@
 <!-- Spacer / Breather Room -->
 <div style="height: 3rem;"></div>
 
-<!-- Full-Width Join Button -->
+<!-- Full-Width Join Button with Rounded Corners and Effects -->
 <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" 
-   style="display: block; width: 100%; text-align: center; padding: 1.5rem 0; font-size: 1.3rem; font-weight: bold; color: white; text-decoration: none; border-radius: 0; background: linear-gradient(90deg, #0d1b4c, #e53935); transition: 0.3s;">
+   class="full-join-btn" target="_blank">
   Join Syndicate in-game 🚀 Click "Login to Become A Recruit"
 </a>
 
-<!-- Optional Hover Effect -->
+<!-- Button Styles -->
 <style>
-  a:hover {
+  .full-join-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #0d1b4c, #e53935);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+  }
+
+  .full-join-btn:hover {
     background: linear-gradient(90deg, #1a2c66, #ff5c5c);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
+  }
+
+  .full-join-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  /* Optional: Make sure on smaller screens it still looks good */
+  @media (max-width: 600px) {
+    .full-join-btn {
+      font-size: 1.1rem;
+      padding: 1.2rem 0;
+    }
   }
 </style>
+
 
 
   </main>
