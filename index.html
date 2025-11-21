@@ -11,14 +11,14 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      text-align: center; /* Universal paragraph centering */
+      text-align: center;
     }
 
     /* Hero section */
     .hero {
       background-color: #0d1b4c;
       color: white;
-      padding: 6rem 1rem 1rem 1rem; /* larger initial padding for scroll effect */
+      padding: 6rem 1rem 1rem 1rem;
       width: 100%;
       overflow: hidden;
       position: relative;
@@ -74,10 +74,10 @@
 
     @keyframes fadeLoop {
       0%   { opacity: 0; }
-      15%  { opacity: 1; }  /* fade in slowly */
+      15%  { opacity: 1; }
       40%  { opacity: 1; }
-      50%  { opacity: 0; }  /* fade out faster */
-      100% { opacity: 0; }  /* wait to fade back in */
+      50%  { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     /* Subtitle fade-in once */
@@ -163,7 +163,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    /* Space between bottom buttons and footer text */
+    /* Bottom buttons and footer */
     .bottom-buttons {
       display:flex;
       justify-content:center;
@@ -232,9 +232,6 @@
   <!-- Scroll behavior JS -->
   <script>
     const hero = document.querySelector('.hero');
-    const title = document.getElementById('hero-title');
-    const subtitle = document.getElementById('hero-subtitle');
-    const logo = document.querySelector('.hero-logo');
 
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -243,32 +240,26 @@
       const heroTranslate = Math.min(scrollY / 2, 150); // max shift up
       hero.style.transform = `translateY(-${heroTranslate}px)`;
 
-      // Optional: shrink padding slightly
+      // Shrink padding slightly
       const newPadding = Math.max(20, 6*16 - scrollY / 10); // converts rem to px approx
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
   </script>
 
   <!-- Background music -->
-<audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" autoplay loop></audio>
-<script>
-  const music = document.getElementById('bg-music');
-  music.volume = 0.3; // 30% volume
-  music.play().catch(() => { 
-    console.log("Autoplay blocked by browser; user interaction required."); 
-  });
-</script>
-
+  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
   <script>
-  const music = document.getElementById('bg-music');
-  music.volume = 0.3; // 30% volume
+    const music = document.getElementById('bg-music');
+    music.volume = 0.3; // 30% volume
 
-  // Play after user clicks anywhere
-  window.addEventListener('click', () => {
+    // Try autoplay immediately
     music.play().catch(() => console.log("Autoplay blocked"));
-  }, { once: true }); // only once
-</script>
 
+    // Play after first user click if blocked
+    window.addEventListener('click', () => {
+      music.play().catch(() => console.log("Autoplay blocked"));
+    }, { once: true });
+  </script>
 
 </body>
 </html>
