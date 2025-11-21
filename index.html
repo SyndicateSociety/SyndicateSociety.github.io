@@ -441,7 +441,7 @@
 <div style="height: 5rem;"></div>
 
 <!-- Dark Blue "Before Joining" Section with Image and Subtle GIF Background -->
-<div style="position: relative; background-color: #0d1b4c; color: white; padding: 3rem 2rem 2rem 2rem; text-align: left; margin-top: 3rem; overflow: hidden; width: 100vw;">
+<div style="position: relative; background-color: #0d1b4c; color: white; padding: 3rem 2rem 2rem 2rem; text-align: left; margin-top: 3rem; overflow: hidden; width: 100%; box-sizing: border-box;">
 
   <!-- Background GIF -->
   <img src="https://i.giphy.com/1zi0rcnL4vDMeJizBh.webp" 
@@ -462,14 +462,42 @@
 </div>
 
 
+
     <!-- Spacer / Breather Room -->
 <div style="height: 8rem;"></div>
+
+<!-- Animated Cursive H1 Above Prolific Pilots -->
+<h1 class="animated-cursive">
+  An organized, better life—EVE Online is worth playing.
+</h1>
 
 <!-- Prolific Pilots Section with spacing -->
 <div style="max-width: 1000px; margin: 4rem auto 3rem auto; padding: 1rem; text-align: left; line-height: 1.8; font-size: 1.15rem; color: #333;">
   <span style="float: left; font-size: 4rem; line-height: 1; font-weight: bold; margin-right: 0.3rem; font-family: 'Georgia', serif;">S</span>
-  yndicate Society also has had numerous prolific pilots across the decades in EVE Online. Many of them still participate and remain part of the society, with alts parked specifically for occasional small group operations. 
+  yndicate Society also has had numerous prolific pilots across the decades in EVE Online. Many of them participate and remain part of the society, with alts parked specifically for occasional small group operations. The Syndicate is a home welcome for past, present and future pilots.
 </div>
+
+<style>
+.animated-cursive {
+  font-family: 'Edu NSW ACT Cursive', cursive;
+  font-size: 2.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid rgba(0,0,0,0.8); /* cursor effect */
+  width: fit-content;
+  margin: 0 auto 2rem auto;
+  animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+</style>
 
 
 
