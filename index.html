@@ -185,23 +185,9 @@
       transform: translateY(0);
     }
 
+    /* Button is now hidden */
     #play-music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #0d1b4c;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    }
-
-    #play-music-btn:hover {
-      background: #4a90e2;
+      display: none;
     }
   </style>
 </head>
@@ -247,11 +233,9 @@
       New recruit pilots please check in-game Corp bulletin for top projects, guides and more.
     </p>
 
-    <!-- ⭐ INSERTED GIF EXACTLY AS REQUESTED — NOTHING ELSE TOUCHED ⭐ -->
     <img src="https://web.ccpgamescdn.com/newssystem/media/73551/1/GIF_EVE_shipAd_brutix.gif"
          alt="EVE Brutix GIF"
          style="max-width:80%; border-radius:6px; margin-bottom:2rem;">
-    <!-- ⭐ END GIF ⭐ -->
 
     <div class="italic-center">
       For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
@@ -285,38 +269,44 @@
 
   <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3"></audio>
 
-  <button id="play-music-btn">Play Music 🎵</button>
+  <!-- hidden button (unused now) -->
+  <button id="play-music-btn"></button>
 
   <script>
     const music = document.getElementById('bg-music');
-    const btn = document.getElementById('play-music-btn');
-
     let musicStarted = false;
 
-    btn.addEventListener('click', () => {
-      if (!musicStarted) {
-        music.volume = 0.02;
-        music.play();
-        musicStarted = true;
-        btn.style.display = 'none';
+    function startMusic() {
+      if (musicStarted) return;
+      musicStarted = true;
 
-        setTimeout(() => {
-          let fadeInterval = setInterval(() => {
-            if (music.volume > 0.001) {
-              music.volume -= 0.0025;
-            } else {
-              clearInterval(fadeInterval);
-            }
-          }, 200);
-        }, 65000);
+      music.volume = 0.02;
+      music.play().catch(() => {}); // Edge fails silently
 
-        setTimeout(() => {
-          music.pause();
-          music.currentTime = 0;
-        }, 70000);
-      }
-    });
+      // Fade out starting at 65 seconds
+      setTimeout(() => {
+        let fadeInterval = setInterval(() => {
+          if (music.volume > 0.001) {
+            music.volume -= 0.0025;
+          } else {
+            clearInterval(fadeInterval);
+          }
+        }, 200);
+      }, 65000);
 
+      // Stop at 70s
+      setTimeout(() => {
+        music.pause();
+        music.currentTime = 0;
+      }, 70000);
+    }
+
+    // Start music on any user click/tap/scroll
+    window.addEventListener('click', startMusic);
+    window.addEventListener('touchstart', startMusic);
+    window.addEventListener('scroll', startMusic);
+
+    // Poem scroll animation
     const poemLines = document.querySelectorAll('.poem-line');
     window.addEventListener('scroll', () => {
       poemLines.forEach(line => {
@@ -326,6 +316,7 @@
       });
     });
 
+    // Hero parallax
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
