@@ -306,5 +306,29 @@
     }, { once: true });
   </script>
 
+  <script>
+  // Fullscreen hero for first visit
+  const firstVisit = !localStorage.getItem("visited");
+  const heroEl = document.querySelector('.hero');
+
+  if (firstVisit) {
+    heroEl.classList.add("fullscreen");
+
+    // Collapse after 0.8s automatically
+    setTimeout(() => {
+      heroEl.classList.remove("fullscreen");
+    }, 800);
+
+    // Collapse on first mouse movement or scroll
+    const collapse = () => heroEl.classList.remove("fullscreen");
+    window.addEventListener("mousemove", collapse, { once: true });
+    window.addEventListener("scroll", collapse, { once: true });
+
+    // Mark as visited
+    localStorage.setItem("visited", "true");
+  }
+</script>
+
+
 </body>
 </html>
