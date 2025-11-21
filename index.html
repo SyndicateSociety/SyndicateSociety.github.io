@@ -42,8 +42,6 @@
       flex-direction: column;
       align-items: center;
       transition: height 0.8s ease, padding 0.8s ease;
-
-      /* Fix jitter / shakiness */
       will-change: transform;
       backface-visibility: hidden;
       transform-style: preserve-3d;
@@ -63,8 +61,6 @@
     .hero-logo, #hero-title, #hero-subtitle {
       position: relative;
       z-index: 1;
-
-      /* also apply smoothing / optimization */
       will-change: transform, opacity;
       backface-visibility: hidden;
       transform-style: preserve-3d;
@@ -150,10 +146,6 @@
       margin: 0.8rem 0;
     }
 
-    .text-center {
-      margin: 1.5rem 0;
-    }
-
     .wide-button, .short-button {
       display: inline-block;
       padding: 1rem 0;
@@ -168,8 +160,8 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
-    .short-button { width: 35%; background-color: #4a90e2; }
+    .wide-button { width: fit-content; background: linear-gradient(90deg, #0d1b4c, #4a90e2); margin: 1.5rem auto; display:block; }
+    .short-button { width: fit-content; background-color: #4a90e2; }
 
     .wide-button:hover, .short-button:hover {
       transform: translateY(-3px);
@@ -186,8 +178,6 @@
       margin: 3rem 0;
       text-align: center;
       color: #333;
-
-      /* Optimize poem lines */
       will-change: transform, opacity;
       backface-visibility: hidden;
     }
@@ -236,39 +226,38 @@
     <div class="poem-container">
       <div class="poem-line">And here</div>
       <div class="poem-line">the stories carry on,</div>
-      <div class="poem-spacer" style="height:40%;"></div>
+      <div class="poem-spacer" style="height:2rem;"></div>
 
       <div class="poem-line">Where real-life joys are never gone.</div>
-      <div class="poem-spacer" style="height:40%;"></div>
+      <div class="poem-spacer" style="height:2rem;"></div>
 
       <div class="poem-line">In Syndicate,</div>
       <div class="poem-line">EVE won’t steal your time</div>
-      <div class="poem-spacer" style="height:40%;"></div>
+      <div class="poem-spacer" style="height:2rem;"></div>
 
       <div class="poem-line">Our way,</div>
       <div class="poem-line">we always try to get better</div>
-      <div class="poem-spacer" style="height:40%;"></div>
+      <div class="poem-spacer" style="height:2rem;"></div>
 
       <div class="poem-line">A timeless way to play and shine</div>
-      <div class="poem-spacer" style="height:40%;"></div>
+      <div class="poem-spacer" style="height:2rem;"></div>
 
       <div class="poem-line">This is our society,</div>
       <div class="poem-line">this is how we fly</div>
-      <div class="poem-spacer" style="height:80%;"></div>
+      <div class="poem-spacer" style="height:3rem;"></div>
     </div>
 
-    <p style="margin-top:40%; margin-bottom:40%;">
+    <p style="margin: 1rem 0;">
       Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.
     </p>
 
-    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button"
-      style="display:block; margin-top:55%; margin-bottom:55%;">
+    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">
       New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost
     </a>
 
     <p>New recruit pilots please check in‑game Corp bulletin for top projects, guides and more.</p>
 
-    <div class="italic-center" style="margin-top:60%; margin-bottom:60%;">
+    <div class="italic-center" style="margin-top:2rem; margin-bottom:2rem;">
       For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey‑loving and great capsuleers.
     </div>
 
@@ -300,8 +289,7 @@
     const poemLines = document.querySelectorAll('.poem-line');
     window.addEventListener('scroll', () => {
       poemLines.forEach(line => {
-        const top = line.getBoundingClientRect().top;
-        if (top < window.innerHeight * 0.85) {
+        if (line.getBoundingClientRect().top < window.innerHeight * 0.85) {
           line.classList.add('visible');
         }
       });
