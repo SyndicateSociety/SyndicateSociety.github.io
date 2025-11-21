@@ -132,6 +132,7 @@
       margin: 1.2rem 0;
     }
 
+    /* Poem styling */
     .poem-container {
       font-family: 'Edu NSW ACT Cursive', cursive;
       font-size: 1.6rem;
@@ -145,12 +146,16 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease, transform 1s ease;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
     }
 
     .poem-line.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .poem-spacer {
+      height: 1.5rem; /* Double spacing between sections */
     }
 
     .wide-button, .short-button {
@@ -228,12 +233,27 @@
     <div class="poem-container">
       <div class="poem-line">And here</div>
       <div class="poem-line">the stories carry on,</div>
+
+      <div class="poem-spacer"></div>
+
       <div class="poem-line">Where real-life joys are never gone.</div>
+
+      <div class="poem-spacer"></div>
+
       <div class="poem-line">In Syndicate,</div>
       <div class="poem-line">EVE won’t steal your time</div>
-      <div class="poem-line">It’s easier AND smarter,</div>
-      <div class="poem-line">We always try to get better</div>
+
+      <div class="poem-spacer"></div>
+
+      <div class="poem-line">Our way,</div>
+      <div class="poem-line">we always try to get better</div>
+
+      <div class="poem-spacer"></div>
+
       <div class="poem-line">A timeless way to play and shine</div>
+
+      <div class="poem-spacer"></div>
+
       <div class="poem-line">This is our society,</div>
       <div class="poem-line">this is how we fly</div>
     </div>
@@ -280,13 +300,15 @@
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
 
-    // Scroll fade-in for poem lines
+    // Staggered scroll fade-in for poem lines
     const lines = document.querySelectorAll('.poem-line');
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          const target = entry.target;
+          // Add visible class with staggered delay
+          setTimeout(() => target.classList.add('visible'), Array.from(lines).indexOf(target) * 200);
+          observer.unobserve(target);
         }
       });
     }, { threshold: 0.1 });
