@@ -61,9 +61,6 @@
       z-index: 1;
       will-change: transform, opacity;
       backface-visibility: hidden;
-      transform-style: preserve-3d;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     .hero-logo {
@@ -114,8 +111,6 @@
       margin: 0 auto;
       padding: 2rem 0;
       color: black;
-      position: relative;
-      z-index: 1;
     }
 
     .container img:first-of-type {
@@ -154,13 +149,6 @@
       background: linear-gradient(90deg, #0d1b4c, #4a90e2);
       border-radius: 8px;
       text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .main-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
     .bottom-buttons {
@@ -171,22 +159,10 @@
       margin: 3rem 0;
     }
 
-    .bottom-buttons a {
-      display: inline-block;
-      padding: 1rem 1.5rem;
-      font-weight: bold;
-      border-radius: 8px;
-      color: white;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .footer-text {
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
     }
-
-    .bottom-buttons a.wide-btn { background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
-    .bottom-buttons a.short-btn { background-color: #4a90e2; }
-
-    .bottom-buttons a:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-
-    .footer-text { font-size: 0.85rem; margin-bottom: 2rem; }
 
     .poem-container {
       font-family: 'Edu NSW ACT Cursive', cursive;
@@ -195,33 +171,43 @@
       margin: 3rem 0;
       text-align: center;
       color: #333;
-      will-change: transform, opacity;
-      backface-visibility: hidden;
     }
 
-    .poem-container .poem-line {
+    .poem-line {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-out;
       margin: 1.8rem 0;
     }
 
-    .poem-container .poem-line.visible {
+    .poem-line.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    @media (max-width: 600px) {
-      #hero-title { font-size: 2.5rem; }
-      #hero-subtitle { font-size: 1rem; }
-      .container { width: 95%; padding: 1rem 0; }
-      iframe { max-width: 100%; }
-      .container img:first-of-type { max-width: 90%; }
-      .poem-container { font-size: 1.4rem; }
+    /* Play Music Button */
+    #play-music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0d1b4c;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
+
+    #play-music-btn:hover {
+      background: #4a90e2;
     }
   </style>
 </head>
 <body>
+
   <header class="hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
     <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
@@ -230,6 +216,7 @@
   </header>
 
   <main class="container">
+
     <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
 
     <div class="italic-center">
@@ -282,29 +269,54 @@
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
     <p>View our guide-compendium linked in our Corp Bulletin.</p>
 
-  <div class="bottom-buttons">
-  <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">New Pilot Briefing 🟦 Application Join</a>
-  <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-btn" target="_blank">SYN.S History</a>
-</div>
+    <div class="bottom-buttons">
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-btn" target="_blank">SYN.S History</a>
+    </div>
 
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
+
   </main>
 
-  <!-- Background Music Audio -->
-  <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3" autoplay></audio>
+  <!-- Background Music (will only play after user click) -->
+  <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3"></audio>
+
+  <!-- Play Button -->
+  <button id="play-music-btn">Play Music 🎵</button>
 
   <script>
-    // Set music volume to 2%
     const music = document.getElementById('bg-music');
-    music.volume = 0.02;
+    const btn = document.getElementById('play-music-btn');
 
-    // Stop music after 70 seconds (1 minute 10 seconds)
-    setTimeout(() => {
-      music.pause();
-      music.currentTime = 0;
-    }, 70000);
+    let musicStarted = false;
 
-    // Poem animation on scroll
+    btn.addEventListener('click', () => {
+      if (!musicStarted) {
+        music.volume = 0.02;
+        music.play();
+        musicStarted = true;
+        btn.style.display = 'none';
+
+        // Fade out starting at 65 seconds
+        setTimeout(() => {
+          let fadeInterval = setInterval(() => {
+            if (music.volume > 0.001) {
+              music.volume -= 0.0025;
+            } else {
+              clearInterval(fadeInterval);
+            }
+          }, 200);
+        }, 65000);
+
+        // Fully stop at 70 seconds
+        setTimeout(() => {
+          music.pause();
+          music.currentTime = 0;
+        }, 70000);
+      }
+    });
+
+    // Poem lines animation on scroll
     const poemLines = document.querySelectorAll('.poem-line');
     window.addEventListener('scroll', () => {
       poemLines.forEach(line => {
@@ -314,7 +326,7 @@
       });
     });
 
-    // Hero scroll effect
+    // Hero scroll movement
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -322,5 +334,6 @@
       hero.style.transform = `translateY(-${heroTranslate}px)`;
     });
   </script>
+
 </body>
 </html>
