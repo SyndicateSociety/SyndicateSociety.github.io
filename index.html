@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syndicate Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    /* --------- FULL CSS INLINE --------- */
     body {
       margin: 0;
       padding: 0;
@@ -18,6 +17,7 @@
       overflow-x: hidden;
     }
 
+    /* Soft dotted/speckled background */
     body::before {
       content: "";
       position: fixed;
@@ -32,6 +32,7 @@
       z-index: -1;
     }
 
+    /* Hero section */
     .hero {
       background-color: #0d1b4c;
       color: white;
@@ -42,15 +43,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: height 0.8s ease, padding 0.8s ease;
     }
 
-    /* FULLSCREEN on first visit */
-    .hero.fullscreen {
-      height: 100vh;
-      padding-top: 20vh;
-    }
-
+    /* MP4 Video background */
     .hero-video {
       position: absolute;
       top: 0;
@@ -62,7 +57,9 @@
       z-index: 0;
     }
 
-    .hero-logo, #hero-title, #hero-subtitle {
+    .hero-logo,
+    #hero-title,
+    #hero-subtitle {
       position: relative;
       z-index: 1;
     }
@@ -80,11 +77,13 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
+    /* Title fade animation */
     #hero-title {
       margin: 0;
       font-size: 4rem;
       opacity: 0;
       animation: fadeLoop 5.75s infinite;
+      transform: translateZ(0); /* fix text-shake */
     }
 
     @keyframes fadeLoop {
@@ -102,6 +101,7 @@
       margin-top: 0.5rem;
       animation: subtitleFade 2s forwards;
       animation-delay: 1s;
+      transform: translateZ(0); /* fix text-shake */
     }
 
     @keyframes subtitleFade {
@@ -143,6 +143,10 @@
     .italic-center {
       font-style: italic;
       margin: 1.2rem 0;
+    }
+
+    .text-center {
+      margin: 2rem 0;
     }
 
     .wide-button, .short-button {
@@ -195,67 +199,82 @@
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Hero -->
   <header class="hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
+
     <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
+
     <h1 id="hero-title">Syndicate Society</h1>
+
     <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
   </header>
 
   <main class="container">
+
     <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
-    <div class="italic-center">Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.</div>
+
+    <div class="italic-center">
+      Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
+    </div>
+
     <div class="text-center">
       <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
-      <a href="#" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️</a>
+
+      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
+
       <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
-      <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
+
+      <div class="italic-center">
+        For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
+      </div>
+
       <p>In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
     </div>
+
     <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
+
     <div class="italic-center">Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.</div>
+
     <p>We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
+
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
+
     <p>View our guide-compendium linked in our Corp Bulletin.</p>
+
     <div class="bottom-buttons">
-      <a href="#" class="wide-button">New Pilot Briefing 🟦 Application Join</a>
-      <a href="#" class="short-button">SYN.S History</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
     </div>
+
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
   <!-- Scroll animation -->
   <script>
     const hero = document.getElementById('hero');
+
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroTranslate = Math.min(scrollY / 2, 150);
       hero.style.transform = `translateY(-${heroTranslate}px)`;
-      const newPadding = Math.max(20, 128 - scrollY / 10);
+      const newPadding = Math.max(20, 8*16 - scrollY / 10);
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
   </script>
 
-  <!-- Fullscreen hero first visit -->
+  <!-- Background music -->
+  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
   <script>
-    const heroEl = document.querySelector('.hero');
-    const isFirstVisit = !localStorage.getItem("visited");
-
-    if(isFirstVisit){
-      heroEl.classList.add("fullscreen");
-
-      // Collapse after 0.8s
-      setTimeout(() => heroEl.classList.remove("fullscreen"), 800);
-
-      // Collapse on first mouse movement or scroll
-      const collapse = () => heroEl.classList.remove("fullscreen");
-      window.addEventListener("mousemove", collapse, { once:true });
-      window.addEventListener("scroll", collapse, { once:true });
-
-      localStorage.setItem("visited","true");
-    }
+    const music = document.getElementById('bg-music');
+    music.volume = 0.03; // 3%
+    music.play().catch(() => console.log("Autoplay blocked"));
+    window.addEventListener('click', () => {
+      music.play().catch(() => console.log("Autoplay blocked"));
+    }, { once: true });
   </script>
 
 </body>
