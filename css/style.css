@@ -144,6 +144,7 @@ p {
   margin: 2rem 0;
 }
 
+/* Buttons */
 .wide-button, .short-button {
   display: inline-block;
   padding: 1rem 0;
@@ -185,11 +186,61 @@ p {
   margin-bottom: 2rem;
 }
 
-/* Mobile */
+/* Poem container */
+.poem-container {
+  font-family: 'Edu NSW ACT Cursive', cursive;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  margin: 3rem 0;
+  text-align: center;
+  color: #333;
+}
+
+.poem-container .poem-spacer {
+  height: 1.2rem;
+}
+
+.poem-container .poem-line {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.poem-container .poem-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Poem GIF */
+.poem-gif-container {
+  width: 55px;
+  height: auto;
+  margin: 0 auto;
+}
+.poem-gif-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Spacing helpers */
+.spacing-25 { margin-top: 25%; }
+.spacing-35 { margin-top: 35%; }
+.spacing-45 { margin-top: 45%; }
+.spacing-50 { margin-top: 50%; }
+.spacing-60 { margin-top: 60%; }
+.spacing-bottom-25 { margin-bottom: 25%; }
+.spacing-bottom-35 { margin-bottom: 35%; }
+.spacing-bottom-45 { margin-bottom: 45%; }
+.spacing-bottom-50 { margin-bottom: 50%; }
+
+/* Mobile adjustments */
 @media (max-width: 600px) {
   #hero-title { font-size: 2.5rem; }
   #hero-subtitle { font-size: 1rem; }
   .container { width: 95%; padding: 1rem 0; }
   iframe { max-width: 100%; }
   .container img:first-of-type { max-width: 90%; }
+  .poem-container { font-size: 1.4rem; }
+  .poem-gif-container { width: 40px; }
 }
