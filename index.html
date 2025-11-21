@@ -236,7 +236,7 @@
       background: #4a90e2;
     }
 
-    /* ⭐ NEW GIF + PARAGRAPH SECTION (resized) ⭐ */
+    /* ⭐ GIF + PARAGRAPH SECTION ⭐ */
     .gif-text-section {
       display: flex;
       align-items: center;
@@ -247,7 +247,7 @@
     }
 
     .gif-text-section .gif-container {
-      flex: 0 0 65%; /* Force gif container to be 65% of the flex row */
+      flex: 0 0 65%;
       max-width: 65%;
     }
 
@@ -285,9 +285,42 @@
       }
 
       .gif-text-section img {
-        max-width: 80%; /* smaller on mobile for GIF */
+        max-width: 80%;
       }
     }
+
+    /* ⭐ Featured Games Section ⭐ */
+    .featured-games {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0; /* no spacing between games */
+      margin: 3rem 0 5rem 0;
+    }
+
+    .featured-game {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      width: 70%;
+      max-width: 500px;
+    }
+
+    .featured-game img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .featured-game p {
+      margin: 0;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
   </style>
 </head>
 
@@ -345,13 +378,18 @@
       In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid‑back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
     </p>
 
+    <!-- ⭐ New Heading Above GIF Section ⭐ -->
+    <h3 style="margin-bottom:2rem; font-size:1.4rem; color:#0d1b4c;">
+      Veteran? Casual gamer, disabled gamer? Syndicate welcomes you. 15+ Years strong.
+    </h3>
+
     <div class="gif-text-section">
       <div class="gif-container">
         <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzhicnl4cGhrb3FtbzBpajAxdnczcTZhdTJpaHIybWk5dHhzM2l2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SWVvQIBDkNyGL9rIzz/giphy.gif"
              alt="Casual gaming GIF">
       </div>
       <p>
-        Syndicate welcomes the casual gamers—the ones who get home after a long day of work and just want to log in to spin ships or relax. This EVE Online corporation also warmly welcomes disabled pilots and veterans. Voice comms are never mandatory (only occasionally for big operations), keeping the experience simple and enjoyable for everyone.
+        Syndicate welcomes the casual gamers—the ones who get home after a long day of work and just want to log in to spin ships or relax. This EVE Online corporation also warmly welcomes disabled pilots and veterans. Voice comms are never mandatory (only occasionally for big operations), keeping the experience simple and enjoyable. If you like a quiet, simple environment, this place is perfect for you.
       </p>
     </div>
 
@@ -368,6 +406,7 @@
     <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in‑game.</p>
     <p>View our guide‑compendium linked in our Corp Bulletin.</p>
 
+    <!-- ⭐ Bottom Buttons ⭐ -->
     <div class="bottom-buttons">
       <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">
         New Pilot Briefing 🟦 Application Join
@@ -379,6 +418,18 @@
     </div>
 
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
+
+    <!-- ⭐ Featured Games Section ⭐ -->
+    <div class="featured-games">
+      <div class="featured-game">
+        <img src="https://www.lgcguild.com/wp-content/uploads/2022/04/FoxholeLogo01-1024x352.webp" alt="Foxhole Game">
+        <p>Foxhole</p>
+      </div>
+      <div class="featured-game">
+        <img src="https://3dprint.com/wp-content/uploads/2016/03/nveKOOa.jpg" alt="Elite Dangerous Game">
+        <p>Elite Dangerous</p>
+      </div>
+    </div>
 
   </main>
 
