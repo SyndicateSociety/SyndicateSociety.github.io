@@ -13,6 +13,14 @@ body {
   width: 100%;
 }
 
+/* First visit fullscreen hero */
+.hero.fullscreen {
+  height: 100vh !important;
+  padding: 20vh 1rem 1rem 1rem !important;
+  transition: height 0.8s ease, padding 0.8s ease;
+}
+
+
 /* Fade in initially */
 h1#hero-title {
   margin: 0;
