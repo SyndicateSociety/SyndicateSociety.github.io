@@ -35,12 +35,9 @@ body::before {
   flex-direction: column;
   align-items: center;
   transition: height 0.8s ease, padding 0.8s ease;
-}
-
-/* First visit fullscreen */
-.hero.fullscreen {
-  height: 100vh !important;
-  padding-top: 20vh !important;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Video background */
@@ -60,6 +57,9 @@ body::before {
 #hero-subtitle {
   position: relative;
   z-index: 1;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
 .hero-logo {
@@ -132,16 +132,16 @@ iframe {
 
 p {
   line-height: 1.8;
-  margin: 2.3rem 0;
+  margin: 1.5rem 0;
 }
 
 .italic-center {
   font-style: italic;
-  margin: 1.2rem 0;
+  margin: 0.8rem 0;
 }
 
 .text-center {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 /* Buttons */
@@ -159,32 +159,13 @@ p {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.wide-button {
-  width: 68%;
-  background: linear-gradient(90deg, #0d1b4c, #4a90e2);
-}
+.wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
+.short-button { width: 35%; background-color: #4a90e2; }
 
-.short-button {
-  width: 35%;
-  background-color: #4a90e2;
-}
+.wide-button:hover, .short-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-.wide-button:hover, .short-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.bottom-buttons {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom: 3rem;
-}
-
-.footer-text {
-  font-size: 0.85rem;
-  margin-bottom: 2rem;
-}
+.bottom-buttons { display:flex; justify-content:center; flex-wrap:wrap; margin-bottom: 3rem; }
+.footer-text { font-size: 0.85rem; margin-bottom: 2rem; }
 
 /* Poem container */
 .poem-container {
@@ -196,43 +177,21 @@ p {
   color: #333;
 }
 
-.poem-container .poem-spacer {
-  height: 1.2rem;
-}
+.poem-container .poem-spacer { height: 2rem; }
 
 .poem-container .poem-line {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s ease-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
 }
 
 .poem-container .poem-line.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Poem GIF */
-.poem-gif-container {
-  width: 55px;
-  height: auto;
-  margin: 0 auto;
-}
-.poem-gif-container img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Spacing helpers */
-.spacing-25 { margin-top: 25%; }
-.spacing-35 { margin-top: 35%; }
-.spacing-45 { margin-top: 45%; }
-.spacing-50 { margin-top: 50%; }
-.spacing-60 { margin-top: 60%; }
-.spacing-bottom-25 { margin-bottom: 25%; }
-.spacing-bottom-35 { margin-bottom: 35%; }
-.spacing-bottom-45 { margin-bottom: 45%; }
-.spacing-bottom-50 { margin-bottom: 50%; }
 
 /* Mobile adjustments */
 @media (max-width: 600px) {
@@ -242,5 +201,4 @@ p {
   iframe { max-width: 100%; }
   .container img:first-of-type { max-width: 90%; }
   .poem-container { font-size: 1.4rem; }
-  .poem-gif-container { width: 40px; }
 }
