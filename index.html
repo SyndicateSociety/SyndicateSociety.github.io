@@ -24,7 +24,6 @@
       background-position: 0 0, 3px 3px;
     }
 
-    /* Hero section */
     .hero {
       background-color: #0d1b4c;
       color: white;
@@ -142,8 +141,16 @@
       color: #333;
     }
 
-    .poem-container .spaced {
+    .poem-line {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
       margin: 1.5rem 0;
+    }
+
+    .poem-line.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .wide-button, .short-button {
@@ -200,14 +207,12 @@
 
 <body>
 
-  <!-- Hero -->
   <header class="hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
 
     <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
 
     <h1 id="hero-title">Syndicate Society</h1>
-
     <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
   </header>
 
@@ -221,16 +226,16 @@
 
     <!-- Poem Section -->
     <div class="poem-container">
-      <div>And here</div>
-      <div class="spaced">the stories carry on,</div>
-      <div class="spaced">Where real-life joys are never gone.</div>
-      <div class="spaced">In Syndicate,</div>
-      <div class="spaced">EVE won’t steal your time</div>
-      <div class="spaced">It’s easier AND smarter,</div>
-      <div class="spaced">We always try to get better</div>
-      <div class="spaced">A timeless way to play and shine</div>
-      <div class="spaced">This is our society,</div>
-      <div class="spaced">this is how we fly</div>
+      <div class="poem-line">And here</div>
+      <div class="poem-line">the stories carry on,</div>
+      <div class="poem-line">Where real-life joys are never gone.</div>
+      <div class="poem-line">In Syndicate,</div>
+      <div class="poem-line">EVE won’t steal your time</div>
+      <div class="poem-line">It’s easier AND smarter,</div>
+      <div class="poem-line">We always try to get better</div>
+      <div class="poem-line">A timeless way to play and shine</div>
+      <div class="poem-line">This is our society,</div>
+      <div class="poem-line">this is how we fly</div>
     </div>
 
     <div class="text-center">
@@ -274,6 +279,19 @@
       const newPadding = Math.max(20, 8*16 - scrollY / 10);
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
+
+    // Scroll fade-in for poem lines
+    const lines = document.querySelectorAll('.poem-line');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    lines.forEach(line => observer.observe(line));
   </script>
 
   <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
