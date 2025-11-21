@@ -17,7 +17,7 @@
     .hero {
       background-color: #0d1b4c;
       color: white;
-      padding: 8rem 1rem 1rem 1rem; /* slightly taller for vertical stretch */
+      padding: 8rem 1rem 1rem 1rem;
       width: 100%;
       overflow: hidden;
       position: relative;
@@ -69,12 +69,12 @@
     }
 
     @keyframes fadeLoop {
-      0% { opacity: 0; }       /* fade in starts */
-      20% { opacity: 1; }      /* fade in complete */
-      50% { opacity: 1; }      /* stay visible */
-      65% { opacity: 0; }      /* fade out */
-      67% { opacity: 0; }      /* short 0.75s pause invisible */
-      100% { opacity: 1; }     /* fully visible for 4s before next loop */
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      50% { opacity: 1; }
+      65% { opacity: 0; }
+      67% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     #hero-subtitle {
@@ -97,150 +97,4 @@
       padding: 2rem 0;
       background-color: white;
       color: black;
-      position: relative;
-      z-index: 1;
-    }
-
-    img, iframe {
-      display: block;
-      margin: 0 auto;
-      height: auto;
-    }
-
-    .container img:first-of-type {
-      max-width: 40%; /* 50% smaller than before */
-      width: 100%;
-    }
-
-    iframe {
-      aspect-ratio: 16/9;
-    }
-
-    p {
-      line-height: 1.8;
-      margin: 2.5rem 0;
-    }
-
-    .italic-center {
-      font-style: italic;
-      margin: 2.5rem 0;
-    }
-
-    .text-center {
-      margin: 2.5rem 0;
-    }
-
-    .wide-button, .short-button {
-      display: inline-block;
-      padding: 1rem 0;
-      margin: 1rem 0.5rem 1rem 0.5rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .wide-button {
-      width: 68%;
-      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
-    }
-
-    .short-button {
-      width: 35%;
-      background-color: #4a90e2;
-    }
-
-    .wide-button:hover, .short-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    .bottom-buttons {
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-bottom: 3rem;
-    }
-
-    .footer-text {
-      font-size: 0.85rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (max-width: 600px) {
-      #hero-title { font-size: 2.5rem; }
-      #hero-subtitle { font-size: 1rem; }
-      .container { width: 95%; padding: 1rem 0; }
-      .container img:first-of-type { max-width: 70%; } /* responsive scaling */
-      .wide-button, .short-button { width: 90%; display: block; margin: 0.5rem auto; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Hero section -->
-  <header class="hero">
-    <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
-    <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
-    <h1 id="hero-title">Syndicate Society</h1>
-    <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
-  </header>
-
-  <main class="container">
-    <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
-    <div class="italic-center">Welcome home, pilot! Here you can breathe, log in, and fly EVE the way it’s meant to be played.</div>
-
-    <div class="text-center">
-      <p>Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.</p>
-      <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button">New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost</a>
-      <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
-
-      <div class="italic-center">For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.</div>
-
-      <p>In Syndicate Society, EVE is a hobby, not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
-    </div>
-
-    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
-
-    <div class="italic-center">Pilot, Syndicate is your bastion, a place to gather strength, a home to become you.</div>
-
-    <p>We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
-    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
-    <p>View our guide-compendium linked in our Corp Bulletin.</p>
-
-    <div class="bottom-buttons">
-      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
-      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
-    </div>
-
-    <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
-  </main>
-
-  <script>
-    const hero = document.querySelector('.hero');
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const heroTranslate = Math.min(scrollY / 2, 150);
-      hero.style.transform = `translateY(-${heroTranslate}px)`;
-      const newPadding = Math.max(20, 8*16 - scrollY / 10);
-      hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
-    });
-  </script>
-
-  <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
-  <script>
-    const music = document.getElementById('bg-music');
-    music.volume = 0.09; // 9% volume
-    music.play().catch(() => console.log("Autoplay blocked"));
-    window.addEventListener('click', () => {
-      music.play().catch(() => console.log("Autoplay blocked"));
-    }, { once: true });
-  </script>
-
-</body>
-</html>
+      posit
