@@ -46,6 +46,9 @@
       flex-direction: column;
       align-items: center;
       transition: height 0.8s ease, padding 0.8s ease;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     /* Video background */
@@ -63,6 +66,9 @@
     .hero-logo, #hero-title, #hero-subtitle {
       position: relative;
       z-index: 1;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
     }
 
     .hero-logo {
@@ -164,7 +170,6 @@
 
     .wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
     .short-button { width: 35%; background-color: #4a90e2; }
-
     .wide-button:hover, .short-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
     .bottom-buttons { display:flex; justify-content:center; flex-wrap:wrap; margin-bottom: 3rem; }
@@ -186,6 +191,9 @@
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-out;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
     }
 
     .poem-container .poem-line.visible {
@@ -224,21 +232,16 @@
       <div class="poem-line">And here</div>
       <div class="poem-line">the stories carry on,</div>
       <div class="poem-spacer"></div>
-
       <div class="poem-line">Where real-life joys are never gone.</div>
       <div class="poem-spacer"></div>
-
       <div class="poem-line">In Syndicate,</div>
       <div class="poem-line">EVE won’t steal your time</div>
       <div class="poem-spacer"></div>
-
       <div class="poem-line">Our way,</div>
       <div class="poem-line">we always try to get better</div>
       <div class="poem-spacer"></div>
-
       <div class="poem-line">A timeless way to play and shine</div>
       <div class="poem-spacer"></div>
-
       <div class="poem-line">This is our society,</div>
       <div class="poem-line">this is how we fly</div>
     </div>
@@ -294,7 +297,7 @@
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      const heroTranslate = Math.min(scrollY / 2, 150);
+      const heroTranslate = Math.round(Math.min(scrollY / 2, 150));
       hero.style.transform = `translateY(-${heroTranslate}px)`;
       const newPadding = Math.max(20, 8*16 - scrollY / 10);
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
