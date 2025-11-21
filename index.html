@@ -27,7 +27,7 @@
       height: 100%;
       background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
       background-size: 12px 12px;
-      opacity: 0.35; 
+      opacity: 0.35;
       pointer-events: none;
       z-index: -1;
     }
@@ -43,6 +43,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: all 0.8s ease;
+    }
+
+    /* FIRST VISIT FULLSCREEN HERO */
+    .hero.fullscreen {
+      height: 100vh !important;
+      padding-top: 20vh !important;
     }
 
     /* MP4 Video background */
@@ -117,17 +124,14 @@
       z-index: 1;
     }
 
-    /* Banner image — 20% smaller with tighter spacing */
     .container img:first-of-type {
       max-width: 80%;
       width: 100%;
-      height: auto;
       margin-top: 0.5rem;
       margin-bottom: 0.6rem;
       border-radius: 6px;
     }
 
-    /* Smaller YouTube video */
     iframe {
       aspect-ratio: 16/9;
       max-width: 70%;
@@ -204,7 +208,7 @@
 <body>
 
   <!-- Hero -->
-  <header class="hero">
+  <header class="hero" id="hero">
     <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
 
     <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
@@ -218,9 +222,8 @@
 
     <img src="https://i.imgur.com/CukfguR.jpeg" alt="Syndicate Society Banner">
 
-    <!-- Updated welcome text -->
     <div class="italic-center">
-      Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress, just us, our space, our home.
+      Welcome home, pilot! Here you can breathe, log in, and fly in EVE Online the way it was meant to be played—zero stress with like minded pilots, just like you.
     </div>
 
     <div class="text-center">
@@ -237,7 +240,7 @@
       <p>In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.</p>
     </div>
 
-    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" title="Syndicate Society Video" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
 
     <div class="italic-center">Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.</div>
 
@@ -257,7 +260,8 @@
 
   <!-- Scroll animation -->
   <script>
-    const hero = document.querySelector('.hero');
+    const hero = document.getElementById('hero');
+
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroTranslate = Math.min(scrollY / 2, 150);
@@ -265,6 +269,30 @@
       const newPadding = Math.max(20, 8*16 - scrollY / 10);
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
+  </script>
+
+  <!-- FIRST VISIT FULLSCREEN HERO -->
+  <script>
+    const firstVisit = !localStorage.getItem("visited");
+    const heroEl = document.getElementById("hero");
+
+    if (firstVisit) {
+      heroEl.classList.add("fullscreen");
+
+      // collapse after 0.5s automatically
+      setTimeout(() => {
+        heroEl.classList.remove("fullscreen");
+      }, 500);
+
+      // also collapse on any mouse movement
+      window.addEventListener(
+        "mousemove",
+        () => heroEl.classList.remove("fullscreen"),
+        { once: true }
+      );
+
+      localStorage.setItem("visited", "true");
+    }
   </script>
 
   <!-- Background music -->
