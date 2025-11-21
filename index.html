@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Syndicate Society</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Edu+NSW+ACT+Cursive&display=swap" rel="stylesheet">
 
   <style>
@@ -19,7 +17,6 @@
       overflow-x: hidden;
     }
 
-    /* Soft dotted/speckled background */
     body::before {
       content: "";
       position: fixed;
@@ -34,7 +31,6 @@
       z-index: -1;
     }
 
-    /* Hero */
     .hero {
       background-color: #0d1b4c;
       color: white;
@@ -46,9 +42,13 @@
       flex-direction: column;
       align-items: center;
       transition: height 0.8s ease, padding 0.8s ease;
+
+      /* Fix jitter / shakiness */
+      will-change: transform;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
     }
 
-    /* Video background */
     .hero-video {
       position: absolute;
       top: 0;
@@ -63,6 +63,13 @@
     .hero-logo, #hero-title, #hero-subtitle {
       position: relative;
       z-index: 1;
+
+      /* also apply smoothing / optimization */
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .hero-logo {
@@ -147,7 +154,6 @@
       margin: 1.5rem 0;
     }
 
-    /* Buttons */
     .wide-button, .short-button {
       display: inline-block;
       padding: 1rem 0;
@@ -165,12 +171,14 @@
     .wide-button { width: 68%; background: linear-gradient(90deg, #0d1b4c, #4a90e2); }
     .short-button { width: 35%; background-color: #4a90e2; }
 
-    .wide-button:hover, .short-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+    .wide-button:hover, .short-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
 
     .bottom-buttons { display:flex; justify-content:center; flex-wrap:wrap; margin-bottom: 3rem; }
     .footer-text { font-size: 0.85rem; margin-bottom: 2rem; }
 
-    /* Poem container */
     .poem-container {
       font-family: 'Edu NSW ACT Cursive', cursive;
       font-size: 1.6rem;
@@ -178,14 +186,20 @@
       margin: 3rem 0;
       text-align: center;
       color: #333;
+
+      /* Optimize poem lines */
+      will-change: transform, opacity;
+      backface-visibility: hidden;
     }
 
-    .poem-container .poem-spacer { transition: height 0.5s ease; }
+    .poem-container .poem-spacer { height: 2rem; }
+
     .poem-container .poem-line {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-out;
     }
+
     .poem-container .poem-line.visible {
       opacity: 1;
       transform: translateY(0);
@@ -204,7 +218,8 @@
 
 <body>
   <header class="hero" id="hero">
-    <video class="hero-video" autoplay muted loop playsinline src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
+    <video class="hero-video" autoplay muted loop playsinline
+      src="https://cdn.pixabay.com/video/2022/08/05/126832-737028191_large.mp4"></video>
     <img src="https://i.imgur.com/TYfsvTW.png" alt="Logo" class="hero-logo">
     <h1 id="hero-title">Syndicate Society</h1>
     <div id="hero-subtitle">EVE’s Timeless Pilot Syndicate</div>
@@ -242,73 +257,68 @@
       <div class="poem-spacer" style="height:80%;"></div>
     </div>
 
-    <!-- SYN.S Intro -->
     <p style="margin-top:40%; margin-bottom:40%;">
       Syndicate Society (SYN.S) is a private EVE Online corporation built for players who enjoy a more casual approach to the game—whether that’s relaxed PVE or small-gang PVP.
     </p>
 
-    <!-- Hero CTA -->
-    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button" style="display:block; margin-top:55%; margin-bottom:55%;">
+    <a href="https://www.eveonline.com/signup?invc=8b6d0afa-3997-4fc1-b631-69879e4ff7f9" class="wide-button"
+      style="display:block; margin-top:55%; margin-bottom:55%;">
       New to EVE? Click "Log In To Become A Recruit" 🖐️ Get your Free Skill Boost
     </a>
 
-    <p>New recruit pilots please check in-game Corp bulletin for top projects, guides and more.</p>
+    <p>New recruit pilots please check in‑game Corp bulletin for top projects, guides and more.</p>
 
-    <!-- Italic Center Section -->
     <div class="italic-center" style="margin-top:60%; margin-bottom:60%;">
-      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
+      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey‑loving and great capsuleers.
     </div>
 
     <p style="margin-top:0.5rem; margin-bottom:0.5rem;">
-      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
+      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid‑back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
     </p>
 
-    <!-- YouTube video -->
     <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
 
-    <!-- Video note -->
     <div class="italic-center" style="margin-top:1rem; margin-bottom:1rem;">
       Pilot, Syndicate is your bastion—a place to gather strength, a home to become you.
     </div>
 
-    <p style="margin-top:1.5rem;">We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.</p>
-    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
-    <p>View our guide-compendium linked in our Corp Bulletin.</p>
+    <p style="margin-top:1.5rem;">
+      We welcome players with busy lives outside the game—people who can’t commit to EVE full‑time, but still want to explore its vast universe and steadily expand their horizons.
+    </p>
+    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in‑game.</p>
+    <p>View our guide‑compendium linked in our Corp Bulletin.</p>
 
     <div class="bottom-buttons">
-      <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
-      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-button" target="_blank">SYN.S History</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/new‑pilot‑briefing‑overview/" class="wide-button" target="_blank">New Pilot Briefing 🟦 Application Join</a>
+      <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate‑society‑history/" class="short-button" target="_blank">SYN.S History</a>
     </div>
 
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
-  <!-- Poem scroll animation -->
   <script>
     const poemLines = document.querySelectorAll('.poem-line');
     window.addEventListener('scroll', () => {
       poemLines.forEach(line => {
         const top = line.getBoundingClientRect().top;
-        if(top < window.innerHeight * 0.85){
+        if (top < window.innerHeight * 0.85) {
           line.classList.add('visible');
         }
       });
     });
   </script>
 
-  <!-- Hero scroll animation -->
   <script>
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      const heroTranslate = Math.min(scrollY / 2, 150);
+      const heroTranslate = Math.round(Math.min(scrollY / 2, 150));
       hero.style.transform = `translateY(-${heroTranslate}px)`;
-      const newPadding = Math.max(20, 8*16 - scrollY / 10);
+      const newPadding = Math.max(20, 8 * 16 - scrollY / 10);
       hero.style.padding = `${newPadding}px 1rem 1rem 1rem`;
     });
   </script>
 
-  <!-- Background music -->
   <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
   <script>
     const music = document.getElementById('bg-music');
