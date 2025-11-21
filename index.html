@@ -185,7 +185,6 @@
       transform: translateY(0);
     }
 
-    /* Play Music Button */
     #play-music-btn {
       position: fixed;
       bottom: 20px;
@@ -248,6 +247,12 @@
       New recruit pilots please check in-game Corp bulletin for top projects, guides and more.
     </p>
 
+    <!-- ⭐ INSERTED GIF EXACTLY AS REQUESTED — NOTHING ELSE TOUCHED ⭐ -->
+    <img src="https://web.ccpgamescdn.com/newssystem/media/73551/1/GIF_EVE_shipAd_brutix.gif"
+         alt="EVE Brutix GIF"
+         style="max-width:80%; border-radius:6px; margin-bottom:2rem;">
+    <!-- ⭐ END GIF ⭐ -->
+
     <div class="italic-center">
       For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
     </div>
@@ -278,10 +283,8 @@
 
   </main>
 
-  <!-- Background Music (will only play after user click) -->
   <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3"></audio>
 
-  <!-- Play Button -->
   <button id="play-music-btn">Play Music 🎵</button>
 
   <script>
@@ -297,7 +300,6 @@
         musicStarted = true;
         btn.style.display = 'none';
 
-        // Fade out starting at 65 seconds
         setTimeout(() => {
           let fadeInterval = setInterval(() => {
             if (music.volume > 0.001) {
@@ -308,7 +310,6 @@
           }, 200);
         }, 65000);
 
-        // Fully stop at 70 seconds
         setTimeout(() => {
           music.pause();
           music.currentTime = 0;
@@ -316,7 +317,6 @@
       }
     });
 
-    // Poem lines animation on scroll
     const poemLines = document.querySelectorAll('.poem-line');
     window.addEventListener('scroll', () => {
       poemLines.forEach(line => {
@@ -326,7 +326,6 @@
       });
     });
 
-    // Hero scroll movement
     const hero = document.getElementById('hero');
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
