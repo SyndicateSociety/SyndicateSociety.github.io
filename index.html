@@ -258,15 +258,15 @@
     </a>
 
     <p style="margin-top:5rem; margin-bottom:5rem;">
-      New recruit pilots please check in‑game Corp bulletin for top projects, guides and more.
+      New recruit pilots please check in-game Corp bulletin for top projects, guides and more.
     </p>
 
     <div class="italic-center">
-      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey‑loving and great capsuleers.
+      For more than 15 years, the syndicate continues to thrive as a home and a forge for independent, whiskey-loving and great capsuleers.
     </div>
 
     <p style="margin-top:5rem; margin-bottom:8rem;">
-      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid‑back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
+      In Syndicate Society, EVE is a hobby—not a second job. Within SYN.S, you’ll find a community of amazing pilots who value a laid-back atmosphere while still growing together in our highsec, lowsec and nullsec headquarters.
     </p>
 
     <iframe src="https://www.youtube.com/embed/ZZ_UopbyjCk" frameborder="0" allowfullscreen></iframe>
@@ -276,28 +276,33 @@
     </div>
 
     <p style="margin-top:5rem; margin-bottom:5rem;">
-      We welcome players with busy lives outside the game—people who can’t commit to EVE full‑time, but still want to explore its vast universe and steadily expand their horizons.
+      We welcome players with busy lives outside the game—people who can’t commit to EVE full-time, but still want to explore its vast universe and steadily expand their horizons.
     </p>
 
-    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in‑game.</p>
-    <p>View our guide‑compendium linked in our Corp Bulletin.</p>
+    <p>In Syndicate, learn the ultimate shortcuts of EVE Online that will drastically maximize your potentials in-game.</p>
+    <p>View our guide-compendium linked in our Corp Bulletin.</p>
 
   <div class="bottom-buttons">
   <a href="https://syndicatesocietyeveonline.wordpress.com/new-pilot-briefing-overview/" class="wide-btn" target="_blank">New Pilot Briefing 🟦 Application Join</a>
   <a href="https://syndicatesocietyeveonline.wordpress.com/2025/08/18/syndicate-society-history/" class="short-btn" target="_blank">SYN.S History</a>
 </div>
 
-
     <div class="footer-text">(SYN.S circa 2011. 2015. 2024+)</div>
   </main>
 
   <!-- Background Music Audio -->
-  <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3" loop autoplay></audio>
+  <audio id="bg-music" src="Syndicate Society EVE One day like this.mp3" autoplay></audio>
 
   <script>
     // Set music volume to 2%
     const music = document.getElementById('bg-music');
     music.volume = 0.02;
+
+    // Stop music after 35 seconds
+    setTimeout(() => {
+      music.pause();
+      music.currentTime = 0;
+    }, 35000);
 
     // Poem animation on scroll
     const poemLines = document.querySelectorAll('.poem-line');
