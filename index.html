@@ -210,7 +210,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s ease-out;
-      margin: 0.8rem 0;
+      margin: 1.8rem 0;
     }
 
     .poem-container .poem-line.visible {
@@ -322,7 +322,7 @@
   <audio id="bg-music" src="Syndicate Society EVE Online (1).mp3" loop></audio>
   <script>
     const music = document.getElementById('bg-music');
-    music.volume = 0.05;
+    music.volume = 0.03;
     music.play().catch(() => console.log("Autoplay blocked"));
     window.addEventListener('click', () => {
       music.play().catch(() => console.log("Autoplay blocked"));
