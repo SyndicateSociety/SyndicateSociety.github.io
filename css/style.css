@@ -203,8 +203,6 @@ p {
   .poem-container { font-size: 1.4rem; }
 }
 
-
-
 /* Shake animation keyframes */
 @keyframes shake {
   0% { transform: translateX(0); }
@@ -226,8 +224,7 @@ p {
   animation: shake 0.5s;
 }
 
-
-@media (max-width: 600px) {
+/* Animated cursive H1 */
 .animated-cursive {
   font-family: 'Edu NSW ACT Cursive', cursive;
   font-size: 2.5rem;
@@ -249,3 +246,50 @@ p {
   50% { border-color: transparent; }
 }
 
+/* ============================== */
+/* Three Images Section (fixed)   */
+/* ============================== */
+.three-images-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem auto;
+  max-width: 1000px;
+  width: 90%;
+}
+
+.three-images-section .three-img {
+  flex: 1 1 0;          /* distribute evenly */
+  max-width: 32%;       /* slightly less than 33% to allow gap */
+  height: auto;         /* preserve aspect ratio */
+  object-fit: cover;    /* fill container without distortion */
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.three-images-section .three-img:hover {
+  transform: scale(1.05);
+}
+
+/* Stack images on small screens */
+@media (max-width: 768px) {
+  .three-images-section .three-img {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* Three-images text box */
+.three-images-text {
+  max-width: 900px;
+  margin: 2rem auto 3rem auto;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  border: 1px solid #aaa;
+  padding: 1.2rem 1rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
