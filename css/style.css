@@ -228,21 +228,24 @@ p {
 
 
 @media (max-width: 600px) {
-  .animated-cursive {
-    white-space: normal !important;
-    width: 100% !important;
-    border-right: none !important; /* optional: removes cursor so it doesn't look weird when wrapping */
-    animation: none !important;    /* optional: typing animation doesn't work on wrapped text */
-  }
+.animated-cursive {
+  font-family: 'Edu NSW ACT Cursive', cursive;
+  font-size: 2.5rem;
+  display: block;
+  max-width: 100%;
+  white-space: normal;
+  overflow: hidden;
+  border-right: 3px solid rgba(0,0,0,0.8);
+  margin: 0 auto 2rem auto;
+  animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
 }
 
-/* Fix drop-cap overflow on mobile */
-@media (max-width: 600px) {
-  span.dropcap {
-    float: none !important;
-    display: inline-block !important;
-    font-size: 2.8rem !important;
-    margin-right: 0.2rem !important;
-  }
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
