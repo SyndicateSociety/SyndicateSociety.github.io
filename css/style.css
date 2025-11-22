@@ -226,3 +226,12 @@ p {
   animation: shake 0.5s;
 }
 
+
+@media (max-width: 600px) {
+  .animated-cursive {
+    white-space: normal !important;
+    width: 100% !important;
+    border-right: none !important; /* optional: removes cursor so it doesn't look weird when wrapping */
+    animation: none !important;    /* optional: typing animation doesn't work on wrapped text */
+  }
+}
