@@ -527,10 +527,11 @@
 .animated-cursive {
   font-family: 'Edu NSW ACT Cursive', cursive;
   font-size: 2.5rem;
-  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+  white-space: normal; /* allows wrapping instead of overflow */
   overflow: hidden;
   border-right: 3px solid rgba(0,0,0,0.8); /* cursor effect */
-  width: fit-content;
   margin: 0 auto 2rem auto;
   animation: typing 4s steps(60, end), blink 0.75s step-end infinite;
 }
@@ -544,6 +545,7 @@
   50% { border-color: transparent; }
 }
 </style>
+
 
     <!-- Spacer / Breather Room -->
 <div style="height: 4rem;"></div>
