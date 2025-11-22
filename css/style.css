@@ -246,13 +246,10 @@ p {
   50% { border-color: transparent; }
 }
 
-/* ============================== */
-/* Three Images Section (fixed)   */
-/* ============================== */
+/* Three images row */
 .three-images-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin: 3rem auto;
   max-width: 1000px;
@@ -260,10 +257,9 @@ p {
 }
 
 .three-images-section .three-img {
-  flex: 1 1 0;          /* distribute evenly */
-  max-width: 32%;       /* slightly less than 33% to allow gap */
-  height: auto;         /* preserve aspect ratio */
-  object-fit: cover;    /* fill container without distortion */
+  width: 100%;
+  aspect-ratio: 16 / 9; /* forces consistent box shape */
+  object-fit: contain;   /* preserve image proportions */
   border-radius: 6px;
   transition: transform 0.3s ease;
 }
@@ -272,15 +268,6 @@ p {
   transform: scale(1.05);
 }
 
-/* Stack images on small screens */
-@media (max-width: 768px) {
-  .three-images-section .three-img {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-/* Three-images text box */
 .three-images-text {
   max-width: 900px;
   margin: 2rem auto 3rem auto;
@@ -292,4 +279,14 @@ p {
   padding: 1.2rem 1rem;
   border-radius: 6px;
   background-color: #f9f9f9;
+}
+
+/* Responsive stacking for smaller screens */
+@media (max-width: 768px) {
+  .three-images-section {
+    grid-template-columns: 1fr;
+  }
+  .three-images-section .three-img {
+    aspect-ratio: auto; /* let height adjust naturally on mobile */
+  }
 }
