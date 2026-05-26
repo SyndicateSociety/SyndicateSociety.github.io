@@ -141,17 +141,46 @@
       margin: 1rem 0;
     }
 
-    .main-cta {
-      display: inline-block;
-      padding: 1rem 2rem;
-      margin: 2rem auto;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: white;
-      background: linear-gradient(90deg, #0d1b4c, #4a90e2);
-      border-radius: 8px;
-      text-decoration: none;
-    }
+.main-cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, #0d1b4c, #4a90e2);
+  border-radius: 8px;
+  text-decoration: none;
+
+  /* Button feel */
+  position: relative;
+  transform: translateY(0);
+  box-shadow: 0 6px 0 #08112f,
+              0 10px 20px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.2s ease;
+}
+
+/* Hover = slightly raised */
+.main-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #08112f,
+              0 14px 24px rgba(0,0,0,0.4);
+
+  filter: brightness(1.08);
+}
+
+/* Click = pressed down */
+.main-cta:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #08112f,
+              0 4px 10px rgba(0,0,0,0.25);
+
+  filter: brightness(0.95);
+}
 
     .wide-btn {
       display: inline-block;
